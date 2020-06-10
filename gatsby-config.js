@@ -2,9 +2,9 @@ module.exports = {
   siteMetadata: {
     // edit below
     title: `Gatsby Starter Personal Blog`,
-    author: `Gatsby`,
+    author: `Jacob Deane`,
     description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://jacobdeane.netlify.com/`,
     social: {
       twitter: `gatsbyjs`,
     },
@@ -39,7 +39,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 630,
             },
           },
           {
@@ -61,18 +61,18 @@ module.exports = {
         plugins: [`gatsby-remark-images`],
       },
     },
-    {
+    /*{
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // edit below
         // trackingId: `ADD YOUR TRACKING ID HERE`,
       },
-    },
+    },*/
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Jacob Deane`,
+        short_name: `JD`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
