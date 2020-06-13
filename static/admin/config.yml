@@ -23,11 +23,16 @@ collections:
     fields:
       - { name: title, label: Title }
       - { name: path, label: Path }
-      - { name: image, label: Image, widget: image, media_library: config: multiple: false }
+      - name: image 
+        label: Image
+        widget: image
+        media_library: 
+          config: 
+            multiple: false
       - { name: start_date, label: Imaging Start Date, widget: date }
       - { name: end_date, label: Imaging End Date, widget: date }
       - { name: location, label: Imaging Location }
       - { name: ra, label: Right Ascension (RA), hint: HH MM SS.S }
       - { name: dec, label: Declination (DEC), hint: ±DD MM SS.S }
       - { name: distance, label: Distance from Earth, hint: light years, widget: number }
-      - { name: description, label: Descriptionß, widget: markdown }
+      - { name: description, label: Description, widget: markdown }
