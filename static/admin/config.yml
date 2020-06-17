@@ -1,6 +1,8 @@
 backend:
   name: github
   repo: jacobdeane/blog
+#  name: proxy
+#  proxy_url: http://localhost:8081/api/v1
 
 media_folder: content/assets
 public_folder: ../assets
@@ -8,31 +10,52 @@ public_folder: ../assets
 collections:
   - name: blog
     label: Blog
+    label_singular: Post
     folder: content/blog
     create: true
     fields:
       - { name: title, label: Title }
-      - { name: path, label: Path }
       - { name: date, label: Date, widget: date }
-      - { name: description, label: Description }
       - { name: body, label: Body, widget: markdown }
-  - name: astrophotography
-    label: Astro Photography
-    folder: content/astrophotography
+
+  - name: pages
+    label: Pages
+    label_singular: Page
+    folder: content/pages
     create: true
     fields:
       - { name: title, label: Title }
-      - { name: path, label: Path }
+      - { name: body, label: Body, widget: markdown }
+
+
+  - name: astrophotography
+    label: Astrophotography
+    label_singular: Image
+    folder: content/astrophotography
+    create: true
+    media_folder: /content/assets/astro
+    public_folder: ../assets/astro
+    fields:
+      - { name: title, label: Title }
       - name: image 
         label: Image
         widget: image
-        media_library: 
+        required: false
+        media_library:
           config: 
             multiple: false
-      - { name: start_date, label: Imaging Start Date, widget: date }
-      - { name: end_date, label: Imaging End Date, widget: date }
-      - { name: location, label: Imaging Location }
-      - { name: ra, label: Right Ascension (RA), hint: HH MM SS.S }
-      - { name: dec, label: Declination (DEC), hint: ±DD MM SS.S }
-      - { name: distance, label: Distance from Earth, hint: light years, widget: number }
-      - { name: description, label: Description, widget: markdown }
+      - { name: start_date, label: Imaging Start Date, widget: date, required: false }
+      - { name: end_date, label: Imaging End Date, widget: date, required: false }
+      - { name: location, label: Imaging Location, required: false }
+      - name: ra
+        label: Right Ascension (RA)
+        hint: "Format: HH MM SS.S"
+        pattern: ['[0-9]{2}[ ][0-9]{2}[ ][0-9]{2}[.]*[0-9]*', "HH MM SS.S"]
+        required: false
+      - name: dec
+        label: Declination (DEC) 
+        hint: "Format: ±DD MM SS.S"
+        pattern: ['[+-][0-9]{2}[ ][0-9]{2}[ ][0-9]{2}[.]*[0-9]*', "±DD MM SS.S"]
+        required: false
+      - { name: distance, label: Distance from Earth, hint: Light Years, widget: number, required: false }
+      - { name: description, label: Description, widget: markdown, required: false }

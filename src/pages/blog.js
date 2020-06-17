@@ -61,7 +61,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: {order: DESC, fields: [frontmatter___date]}, limit: 1000, filter: {frontmatter: {post_type: {eq: "blog"}}}) {
       edges {
         node {
           excerpt
