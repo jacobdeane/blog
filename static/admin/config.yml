@@ -30,7 +30,7 @@ collections:
 
   - name: astrophotography
     label: Astrophotography
-    label_singular: Image
+    label_singular: Astro Image
     folder: content/astrophotography
     create: true
     media_folder: /content/assets/astro

@@ -1,12 +1,11 @@
 module.exports = {
   siteMetadata: {
-    // edit below
-    title: `Gatsby Starter Personal Blog`,
+    title: `Jacob Deane - geek, photographer, engineer`,
     author: `Jacob Deane`,
-    description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
+    description: `The personal ramblings of  Jacob Deane, a nuclear submarine engineer by day & an astrophotographer by night, except when its cloudy.`,
     siteUrl: `https://jacobdeane.netlify.com/`,
     social: {
-      twitter: `gatsbyjs`,
+      instagram: `jd_astronomy`,
     },
   },
   plugins: [
