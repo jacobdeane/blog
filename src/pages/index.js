@@ -29,7 +29,7 @@ class Blog extends React.Component {
                 >
                   <Link
                     style={{ boxShadow: `none` }}
-                    to={`/blog${node.fields.slug}`}
+                    to={`${node.frontmatter.category}/${node.frontmatter.year}${node.fields.slug}`}
                   >
                     {title}
                   </Link>
@@ -67,8 +67,10 @@ export const pageQuery = graphql`
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
+            year: date(formatString: "YYYY")
             title
             description
+            category
           }
         }
       }

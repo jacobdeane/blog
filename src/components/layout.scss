@@ -4,7 +4,7 @@ header {
 	position: relative;
 	max-width: $content_width;
 	margin: auto;
-	padding: 1.25rem calc(2rem + env(safe-area-inset-left)) 0;
+	padding: 1.25rem calc(2rem + env(safe-area-inset-left));
 }
 .header__title {
 	display: inline-block;
@@ -23,11 +23,11 @@ svg#logo {
 
 .menu__open {
     position: absolute;
-    right: 0;
+    right: 1rem;
     top: 0;
     display: block;
-    width: 6rem;
-    height: 6rem;
+    width: 4rem;
+    height: 4rem;
     cursor: pointer;
     z-index: 2001;
     border-radius: 50%;
@@ -45,25 +45,25 @@ svg#logo {
     -o-transition: background 0.5s ease;
     transition: background 0.5s ease;
     border-radius: 3px;
-    margin-left: 2rem;
+    margin-left: 1rem;
 }
 
 .menu__open i:nth-child(1) {
-    margin-top: 1.25em;
+    margin-top: 1.5rem;
 }
 
 .menu__open i:nth-child(2) {
-    margin-top: .25em;
+    margin-top: 6px;
     opacity: 1;
 }
 
 .menu__open i:nth-child(3) {
-    margin-top: .25em;
+    margin-top: 6px;
 }
 
 #menu:checked + .menu__open {
     position: fixed;
-    right: 0;
+    right: 1rem;
 }
 
 #menu:checked + .menu__open i {
@@ -72,7 +72,7 @@ svg#logo {
 }
 
 #menu:checked + .menu__open i:nth-child(1) {
-    transform: translateY(0.375em) rotate(225deg);
+    transform: translateY(0.3333333em) rotate(225deg);
 }
 
 #menu:checked + .menu__open i:nth-child(2) {
@@ -80,7 +80,7 @@ svg#logo {
 }
 
 #menu:checked + .menu__open i:nth-child(3) {
-    transform: translateY(-0.375em) rotate(135deg);
+    transform: translateY(-0.333333em) rotate(135deg);
 }
 
 /* END OF MENU BUTTON */
@@ -184,6 +184,7 @@ svg#logo {
 
 	.menu__list {
 		display: block;
+		margin:0;
 	}
 
 	.menu__item {
@@ -212,5 +213,8 @@ main {
 	max-width: $content_width;
 	margin: auto;
 	padding: 1.618rem calc(2rem + env(safe-area-inset-left));
-	text-align: justify;
+}
+
+@media only screen and ( min-width: $content_width ) {
+	main { text-align: justify; }
 }

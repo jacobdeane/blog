@@ -1,8 +1,8 @@
 backend:
-  name: github
-  repo: jacobdeane/blog
-#  name: proxy
-#  proxy_url: http://localhost:8081/api/v1
+#  name: github
+#  repo: jacobdeane/blog
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
 
 media_folder: content/assets
 public_folder: ../assets
@@ -16,6 +16,13 @@ collections:
     fields:
       - { name: title, label: Title }
       - { name: date, label: Date, widget: date }
+      - name: category
+        label: Main Category
+        widget: relation
+        collection: categories
+        searchFields: ["title"]
+        valueField: "{{slug}}"
+        displayFields: ["title"]
       - { name: body, label: Body, widget: markdown }
 
   - name: pages
@@ -59,3 +66,11 @@ collections:
         required: false
       - { name: distance, label: Distance from Earth, hint: Light Years, widget: number, required: false }
       - { name: description, label: Description, widget: markdown, required: false }
+  
+  - name: categories
+    label: Categories
+    label_singular: Category
+    folder: content/categories
+    create: true
+    fields:
+      - { name: title, label: Category }

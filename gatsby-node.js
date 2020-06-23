@@ -20,6 +20,8 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                category
+                date(formatString: "YYYY")
               }
             }
           }
@@ -63,7 +65,7 @@ exports.createPages = ({ graphql, actions }) => {
         default: //blog
 
           createPage({
-            path: `blog${post.node.fields.slug}`,
+            path: `${post.node.frontmatter.category}/${post.node.frontmatter.date}${post.node.fields.slug}`,
             component: blogPost,
             context: {
               slug: post.node.fields.slug,
