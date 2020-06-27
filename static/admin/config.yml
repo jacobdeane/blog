@@ -23,6 +23,25 @@ collections:
         searchFields: ["title"]
         valueField: "{{slug}}"
         displayFields: ["title"]
+        default: news
+        required: true
+      - name: other_categories
+        label: Other Categories
+        widget: relation
+        collection: categories
+        searchFields: ["title"]
+        valueField: "{{slug}}"
+        displayFields: ["title"]
+        multiple: true
+        required: false
+      - name: hero_image
+        label: Hero Image
+        widget: image
+        media_library:
+          config:
+            multiple: false
+        required: false
+      - { name: excerpt, label: Excerpt, widget: text, required: false }
       - { name: body, label: Body, widget: markdown }
 
   - name: pages

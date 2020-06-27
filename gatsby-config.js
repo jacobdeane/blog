@@ -18,6 +18,12 @@ module.exports = {
     `gatsby-plugin-feed-mdx`,
     `gatsby-plugin-sass`,
     {
+      resolve: 'gatsby-plugin-extract-image-colors',
+      options: {
+        extensions: ['jpg', 'jpeg', 'png']
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
@@ -51,6 +57,9 @@ module.exports = {
         extensions: [".mdx", ".md"],
         gatsbyRemarkPlugins: [
           {
+            resolve: require.resolve(`./plugins/gatsby-remark-unwrap-inlinecode`),
+          },
+          {
             resolve: "gatsby-remark-embed-video",
             options: {
               width: 800,
@@ -76,7 +85,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: `margin-bottom: 1.618rem`,
             },
           },
           {

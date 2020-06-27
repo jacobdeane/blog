@@ -11,7 +11,6 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -61,6 +60,9 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         category
         description
+        hero_image {
+          relativePath
+        }
       }
     }
   }

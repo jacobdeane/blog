@@ -2,6 +2,14 @@
 title: Why smart homes aren't the future we were promised. Yet.
 date: 2019-05-26T20:38:15.671Z
 category: technology
+other_categories:
+  - smart-home
+  - home-automation
+  - iot
+hero_image: ../assets/google-voice-assistant.jpeg
+excerpt: The problem with smart homes is that they are not in fact very smart,
+  at least not in their current form. This post breaks down the current state of
+  home automation and offers a glimpse at what the future might hold.
 ---
 The idea of an intelligent home that understands your behaviour and routines – automatically controlling lighting, climate, entertainment and looking after your security – used to be science fiction. Now we are living in the future and it kind of sucks. Here are a few things I think are wrong with the current smart home reality.
 
@@ -18,6 +26,7 @@ Smart plugs and smart lights offer the ability to be remotely turned on or off, 
 Even the professional home automation companies such as Control 4, Crestron & Lutron all showcase their touchscreen tablet apps as the way to control a smart home. Check out this video from Crestron to see what I mean:
 
 `youtube: GE051mAvSi4`
+
 
 I would argue that’s not smart – it’s fancy sure, but if it takes longer to turn on a light than a it does to use an old fashioned light switch, then it’s not really an improvement. And if you forgot to charge your iPad it’s a significant problem!
 

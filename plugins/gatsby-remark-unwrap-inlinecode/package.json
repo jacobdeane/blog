@@ -1,0 +1,20 @@
+{
+  "name": "gatsby-remark-unwrap-inlinecode",
+  "version": "1.0.0",
+  "description": "A plugin to remove root paragraphs on inlineCode nodes. Based on gatsby-remark-unwrap-images by Cédric Delpoux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build script setup\""
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "author": "Jacob Deane",
+  "license": "MIT",
+  "dependencies": {
+    "unist-util-remove": "^2.0.0",
+    "unist-util-visit": "^2.0.2"
+  }
+}
