@@ -1,0 +1,117 @@
+$content_width: 872px;
+
+.hero {
+	position: relative;
+	width: 100%;
+	height: 75vh;
+	max-width: 1920px;
+	margin: -4.444444rem auto 1.618rem;
+}
+
+.hero__img {
+	position: absolute !important;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.hero__overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+.hero__row {
+	display: table-cell;
+	vertical-align: bottom;
+} 
+
+.hero__text {
+	max-width: $content_width;
+	padding: 2rem calc(2rem + env(safe-area-inset-left));
+	margin: auto;
+	vertical-align: bottom;
+}
+
+.hero__excerpt {
+	font-size: 1.25em;
+	font-weight: 300;
+	line-height: 1.25;
+}
+
+.hero__categories {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 1.618rem 0;
+}
+
+.hero__categories__item {
+	display: inline-block;
+	margin: 0 .5rem .5rem 0;
+}
+
+.hero__categories__item:last-child {
+	margin-right: 0;
+}
+
+.hero__categories__item > a {
+	display: block;
+	font-size: .75rem;
+	font-family:
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+    letter-spacing: 0.1em;
+	padding: .125em .5em;
+	text-decoration: none;
+	color: black;
+	text-transform: uppercase;
+}
+
+.hero__date {
+	font-size: .75em;
+	font-family:
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+    letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+//dark theme
+.hero.dark {
+	.hero__text {
+		color: white;
+	}
+	.hero__excerpt, .hero__categories__item > a {
+		color: hsl(0,0,80);
+	}
+	.hero__date {
+		color: hsl(0,0,70);
+	}
+}
+
+@media only screen and ( min-width: 1400px ) {
+	.hero__text {
+		font-size: 1.2em;
+		max-width: 1272px;
+		padding-bottom: 6.472rem; 
+	}
+}

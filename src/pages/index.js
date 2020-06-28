@@ -21,7 +21,7 @@ class Blog extends React.Component {
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
-              <div key={node.fields.slug}>
+              <article key={node.fields.slug}>
                 <h3
                   style={{
                     marginBottom: rhythm(1 / 4),
@@ -40,7 +40,7 @@ class Blog extends React.Component {
                     __html: node.frontmatter.description || node.excerpt,
                   }}
                 />
-              </div>
+              </article>
             )
           })}
         </div>

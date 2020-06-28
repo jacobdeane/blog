@@ -1,6 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
+import { Global, css } from "@emotion/core"
 import styled from "styled-components"
+
+import hexToHSL from "../utils/hexToHSL"
 
 import SiteLogo from "../../content/assets/logo.svg"
 
@@ -10,11 +13,40 @@ import "./layout.scss"
 
 class Layout extends React.Component {
   render() {
-    const { title, children } = this.props
+    const { title, children, theme, vibrant } = this.props
+
+    let global_styles = ""
+
+    if(vibrant) {
+      const color_link = hexToHSL(vibrant, null, 50)
+      const color_link_hover = hexToHSL(vibrant, null, 70)
+      const color_selection = hexToHSL(vibrant)
+
+      global_styles = (
+        <Global
+          styles={css`
+            article a:link, article a:visited {
+              color: ${color_link};
+            }
+            article a:hover, article a:active {
+              color: ${color_link_hover};
+            }
+            *::selection {
+              background: ${color_selection};
+              color: white;
+            }
+            *::moz-selection {
+              background: ${color_selection};
+              color: white;
+            }
+          `}
+        />
+      )
+    }
     
     return (
       <Wrapper>
-          <header>
+          <header className={`navbar ${theme}`}>
             <h1
               className='header__title' 
               title={title}
@@ -47,6 +79,7 @@ class Layout extends React.Component {
         <Footer>
           © {new Date().getFullYear()} Jacob Deane
         </Footer>
+        {global_styles}
       </Wrapper>
     )
   }

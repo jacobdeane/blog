@@ -88,7 +88,7 @@ There are quite a few home automation projects under development in the open sou
 
 OpenHAB and Home Assistant are platforms that connect and integrate with a wide variety of devices including lights, speakers, thermostats and much more. Both offer mobile apps to see status and control devices connected to the system and both offer the ability to write automation scripts – the thing that makes your smart home smart.
 
-[https://www.openhab.org](https://www.openhab.org/)\
+<https://www.openhab.org/>  
 <https://www.home-assistant.io/>
 
 ### Node-RED

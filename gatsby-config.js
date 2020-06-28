@@ -17,6 +17,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-feed-mdx`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-emotion`,
     {
       resolve: 'gatsby-plugin-extract-image-colors',
       options: {

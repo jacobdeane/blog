@@ -1,6 +1,6 @@
 $content_width: 872px;
 
-header {
+.navbar {
 	position: relative;
 	max-width: $content_width;
 	margin: auto;
@@ -15,6 +15,8 @@ header {
 svg#logo { 
 	height: 1em; 
 	width: auto;
+    position: relative;
+    z-index: 1000;
 }
 
 .menu__hidden { display: none; }
@@ -198,7 +200,7 @@ svg#logo {
 		font-size: 1em;
 		margin: .125em .5em;
 		padding: 0;
-		color: #999;
+		color: #000;
 		font-weight:300;
 	}
 
@@ -209,12 +211,32 @@ svg#logo {
 }
 /* END OF LARGER MENU */
 
-main {
+
+// dark theme
+.navbar.dark{
+    svg#logo path {
+        fill: white;
+    }
+    .menu__open i {
+        background: white;
+    }
+    .menu__container .menu__item > a:link, .menu__container .menu__item > a:visited {
+        color: white;
+    }
+}
+
+article {
 	max-width: $content_width;
 	margin: auto;
 	padding: 1.618rem calc(2rem + env(safe-area-inset-left));
 }
 
 @media only screen and ( min-width: $content_width ) {
-	main { text-align: justify; }
+	article { text-align: justify; }
+}
+
+@media only screen and ( min-width: 1400px ) {
+    .navbar {
+        max-width: 1272px;
+    }
 }
