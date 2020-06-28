@@ -6,6 +6,7 @@ other_categories:
   - smart-home
   - home-automation
   - iot
+  - technology
 hero_image: ../assets/google-voice-assistant.jpeg
 excerpt: The problem with smart homes is that they are not in fact very smart,
   at least not in their current form. This post breaks down the current state of

@@ -29,11 +29,8 @@ class BlogPostTemplate extends React.Component {
       </p>
     )
 
-    //get the categories from other_categories
+    //get the categories
     let categories = post.frontmatter.other_categories
-    //then add the main category to the array
-    categories.push(post.frontmatter.category)
-    //and finally, sort it
     categories.sort()
 
     let theme = ''

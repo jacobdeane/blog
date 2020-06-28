@@ -34,6 +34,7 @@ collections:
         displayFields: ["title"]
         multiple: true
         required: false
+        hint: Only used for displaying the categories, please include the main category in this list too.
       - name: hero_image
         label: Hero Image
         widget: image

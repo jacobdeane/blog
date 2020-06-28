@@ -6,6 +6,7 @@ other_categories:
   - smart-home
   - iot
   - home-automation
+  - technology
 hero_image: ../assets/cory-woodward-ghqrkqld3ck-unsplash.jpg
 dark_image: true
 excerpt: ""
