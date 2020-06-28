@@ -91,7 +91,14 @@ class Layout extends React.Component {
                     onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
                     checked={theme === 'dark'}
                   />
-                  <span className="darkmode__switch__slider"></span>
+                  <span className="darkmode__switch__slider">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                  </span>
                 </label>
               )}
             </ThemeToggler>

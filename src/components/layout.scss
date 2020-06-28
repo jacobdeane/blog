@@ -1,10 +1,10 @@
-$content_width: 872px;
+$content_width: 836px;
 
 .navbar {
 	position: relative;
 	max-width: $content_width;
 	margin: auto;
-	padding: 1.25rem calc(2rem + env(safe-area-inset-left));
+	padding: 1.25rem calc(1rem + env(safe-area-inset-left));
 }
 .header__title {
 	display: inline-block;
@@ -13,7 +13,7 @@ $content_width: 872px;
 }
 
 svg#logo { 
-	height: 1em; 
+	height: 0.8em; 
 	width: auto;
     position: relative;
     z-index: 1000;
@@ -25,7 +25,7 @@ svg#logo {
 
 .menu__open {
     position: absolute;
-    right: 1rem;
+    right: 0;
     top: 0;
     display: block;
     width: 4rem;
@@ -65,7 +65,7 @@ svg#logo {
 
 #menu:checked + .menu__open {
     position: fixed;
-    right: 1rem;
+    right: 0;
 }
 
 #menu:checked + .menu__open i {
@@ -133,7 +133,7 @@ svg#logo {
     font-weight: 500;
     text-transform: uppercase;
     text-decoration: none;
-    padding: .25em calc(2rem + env(safe-area-inset-left));
+    padding: .25em calc(1rem + env(safe-area-inset-left));
     line-height: 1.5;
     color: #ccc;
     font-size: 1.5em;
@@ -267,12 +267,13 @@ body.dark {
     width: 50px;
     height: 24px;
     z-index: 10;
-    margin-top: 2px;
+    margin-top: 1px;
     margin-left: .5rem;
     border: solid 2px rgba(255,255,255,0.75);
     border-radius: 14px;
     box-sizing: content-box;
     float: right;
+    margin-right: 4rem;
 }
 
 .darkmode__switch__input {
@@ -297,10 +298,44 @@ body.dark {
     width: 18px;
     left: 3px;
     bottom: 3px;
-    background-color: white;
-    -webkit-transition: .1s;
-    transition: .1s;
+    background-color: #F5EB42;
+    -webkit-transition: .2s;
+    transition: .2s;
     border-radius: 50%;
+}
+
+.darkmode__switch__slider i {
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    background-color: hsla(0,0,100,0.75);
+    border-radius: 50%;
+    top:4px;
+    left: 16px;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.darkmode__switch__slider i:nth-of-type(2) {
+    top:6px;
+    left:24px;
+}
+.darkmode__switch__slider i:nth-of-type(3) {
+    top:12px;
+    left:10px;
+}
+.darkmode__switch__slider i:nth-of-type(4) {
+    top:18px;
+    left:8px;
+}
+.darkmode__switch__slider i:nth-of-type(5) {
+    top:10px;
+    left:20px;
+}
+.darkmode__switch__slider i:nth-of-type(6) {
+    top:9px;
+    left:4px;
 }
 
 .darkmode__switch__input:checked + .darkmode__switch__slider:before {
@@ -309,17 +344,47 @@ body.dark {
     transform: translateX(21px) translateY(-2px);
 
     background-color: transparent;
-    box-shadow: 5px 2px 0 0 #ccc;
+    box-shadow: 5px 2px 0 0 #FFFDF2;
 }
 
+.darkmode__switch__input:checked + .darkmode__switch__slider i {
+    width: 2px;
+    height: 2px;
+    -webkit-transform: translateX(4px);
+    -ms-transform: translateX(4px);
+    transform: translateX(4px);
+}
+
+.darkmode__switch__input:checked + .darkmode__switch__slider i:nth-of-type(1),
+.darkmode__switch__input:checked + .darkmode__switch__slider i:nth-of-type(4),
+.darkmode__switch__input:checked + .darkmode__switch__slider i:nth-of-type(6) {
+    background-color: white;
+    width: 3px;
+    height: 3px;
+} 
+
+
 body.light {
-    .darkmode__switch { border-color:rgba(0,0,0,0.75); }
-    .darkmode__switch__slider:before { background-color: black; }
+    .darkmode__switch { border-color: rgba(0,0,0,0.75); }
+    .darkmode__switch__slider:before { background-color: #E4C74D; }
+    .darkmode__switch__slider i { background-color: hsla(0,0,90,0.85); }
+}
+
+body.light .navbar.light.hashero {
+    .darkmode__switch { background-color: rgba(0,0,0,0.15); }
 }
 
 body.light .navbar.dark.hashero {
-    .darkmode__switch { border-color:rgba(255,255,255,0.75); }
-    .darkmode__switch__slider:before { background-color: white; }
+    .darkmode__switch { border-color: rgba(255,255,255,0.75); }
+    .darkmode__switch__slider:before { background-color: #F5EB42; }
+    .darkmode__switch__slider i { background-color: hsla(0,0,100,0.75); }
+}
+
+@media only screen and ( min-width: $content_width ) {
+    .darkmode__switch {
+        margin-top: 2px;
+        margin-right: 0;
+    }
 }
 
 /* END OF DARK MODE SWITCH */
@@ -327,7 +392,7 @@ body.light .navbar.dark.hashero {
 article {
 	max-width: $content_width;
 	margin: auto;
-	padding: 1.618rem calc(2rem + env(safe-area-inset-left));
+	padding: 1.618rem calc(1rem + env(safe-area-inset-left));
 }
 
 @media only screen and ( min-width: $content_width ) {
@@ -335,7 +400,10 @@ article {
 }
 
 @media only screen and ( min-width: 1400px ) {
+    svg#logo { 
+        height: 1em; 
+    }
     .navbar {
-        max-width: 1272px;
+        max-width: 1236px;
     }
 }
