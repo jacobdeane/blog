@@ -36,23 +36,22 @@ class BlogPostTemplate extends React.Component {
     //and finally, sort it
     categories.sort()
 
-    let theme = 'light'
+    let theme = ''
+    let hero_class = '';
 
     if (post.frontmatter.hero_image) {
 
-      //color scheme check
-      let hero_color = post.frontmatter.hero_image.colors.lightMuted
+      hero_class = ' hashero'
+      theme = 'light'
+      
       if(post.frontmatter.dark_image) {
-        hero_color = post.frontmatter.hero_image.colors.darkMuted
         theme = 'dark'
       }
 
       hero = (
         <Hero
           theme={theme}
-          fluid={post.frontmatter.hero_image.childImageSharp.fluid} 
-          color={hero_color}
-          vibrant={post.frontmatter.hero_image.colors.vibrant}
+          fluid={post.frontmatter.hero_image.childImageSharp.fluid}
           title={post.frontmatter.title}
           excerpt={post.excerpt}
           categories={categories}
@@ -63,7 +62,15 @@ class BlogPostTemplate extends React.Component {
     }
 
     return (
-      <Layout location={this.props.location} title={siteTitle} theme={theme} vibrant={post.frontmatter.hero_image.colors.vibrant}>
+      <Layout 
+        location={this.props.location} 
+        title={siteTitle} 
+        theme={theme}
+        hero={hero_class}
+        vibrant={post.frontmatter.hero_image.colors.vibrant}
+        lightMuted={post.frontmatter.hero_image.colors.lightMuted}
+        darkMuted={post.frontmatter.hero_image.colors.darkMuted}
+      >
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}

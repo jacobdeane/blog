@@ -18,6 +18,7 @@ module.exports = {
     `gatsby-plugin-feed-mdx`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-emotion`,
+    `gatsby-plugin-dark-mode`,
     {
       resolve: 'gatsby-plugin-extract-image-colors',
       options: {

@@ -206,13 +206,45 @@ svg#logo {
 
 	.menu__container .menu__item > a:hover, .menu__container .menu__item > a:active, .menu__container .menu__item > a[aria-current]:not([aria-current="false"]) { color: #000;}
 
-	.menu__container .menu__item:last-child > a { margin-right: 0; }
-
 }
 /* END OF LARGER MENU */
 
 
-// dark theme
+/* START OF DARK MODE */
+
+body.dark {
+    background: black;
+    color: hsl(0,0,80);
+
+    svg#logo path {
+        fill: hsl(0,0,80);
+    }
+    .menu__open i {
+        background: hsl(0,0,80);
+    }
+    .menu__container .menu__item > a:link, .menu__container .menu__item > a:visited {
+        color: hsl(0,0,80);
+    }
+    .menu__container .menu__item > a:hover, .menu__container .menu__item > a:active {
+        color: white;
+    }
+
+    .navbar.hashero {
+        svg#logo path {
+        fill: white;
+        }
+        .menu__open i {
+            background: white;
+        }
+        .menu__container .menu__item > a:link, .menu__container .menu__item > a:visited {
+            color: white;
+        }
+    }
+
+}
+
+//and for when we have a dark hero on the light theme.
+
 .navbar.dark{
     svg#logo path {
         fill: white;
@@ -224,6 +256,73 @@ svg#logo {
         color: white;
     }
 }
+
+/* END OF DARK MODE */
+
+/* START OF DARK MODE SWITCH */
+
+.darkmode__switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    z-index: 10;
+    margin-top: 2px;
+    margin-left: .5rem;
+    border: solid 2px rgba(255,255,255,0.75);
+    border-radius: 14px;
+    box-sizing: content-box;
+    float: right;
+}
+
+.darkmode__switch__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.darkmode__switch__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.darkmode__switch__slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .1s;
+    transition: .1s;
+    border-radius: 50%;
+}
+
+.darkmode__switch__input:checked + .darkmode__switch__slider:before {
+    -webkit-transform: translateX(21px) translateY(-2px);
+    -ms-transform: translateX(21px) translateY(-2px);
+    transform: translateX(21px) translateY(-2px);
+
+    background-color: transparent;
+    box-shadow: 5px 2px 0 0 #ccc;
+}
+
+body.light {
+    .darkmode__switch { border-color:rgba(0,0,0,0.75); }
+    .darkmode__switch__slider:before { background-color: black; }
+}
+
+body.light .navbar.dark.hashero {
+    .darkmode__switch { border-color:rgba(255,255,255,0.75); }
+    .darkmode__switch__slider:before { background-color: white; }
+}
+
+/* END OF DARK MODE SWITCH */
 
 article {
 	max-width: $content_width;

@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { Global, css } from "@emotion/core"
 import styled from "styled-components"
+import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
 import hexToHSL from "../utils/hexToHSL"
 
@@ -13,18 +14,41 @@ import "./layout.scss"
 
 class Layout extends React.Component {
   render() {
-    const { title, children, theme, vibrant } = this.props
+    const { title, children, theme, hero, vibrant, lightMuted, darkMuted } = this.props
 
     let global_styles = ""
 
     if(vibrant) {
       const color_link = hexToHSL(vibrant, null, 50)
-      const color_link_hover = hexToHSL(vibrant, null, 70)
+      const color_link_hover = hexToHSL(vibrant, null, 75)
       const color_selection = hexToHSL(vibrant)
 
       global_styles = (
         <Global
           styles={css`
+            .hero__overlay {
+              background-color: ${hexToHSL(darkMuted, null, 20, 0.6)};
+            }
+            body.light .hero.light .hero__overlay {
+              background-color: ${hexToHSL(lightMuted, null, 80, 0.6)};
+            }
+
+            .hero__categories__item { background-color: black; }
+            .hero__categories__item:nth-of-type(1) { background-color: ${hexToHSL(vibrant, null, 30)}; }
+            .hero__categories__item:nth-of-type(2) { background-color: ${hexToHSL(vibrant, null, 25)}; }
+            .hero__categories__item:nth-of-type(3) { background-color: ${hexToHSL(vibrant, null, 20)}; }
+            .hero__categories__item:nth-of-type(4) { background-color: ${hexToHSL(vibrant, null, 15)}; }
+            .hero__categories__item:nth-of-type(5) { background-color: ${hexToHSL(vibrant, null, 10)}; }
+            .hero__categories__item:nth-of-type(6) { background-color: ${hexToHSL(vibrant, null, 5)}; }
+
+            body.light .hero.light .hero__categories__item { background-color: white; }
+            body.light .hero.light .hero__categories__item:nth-of-type(1) { background-color: ${hexToHSL(vibrant, null, 70)}; }
+            body.light .hero.light .hero__categories__item:nth-of-type(2) { background-color: ${hexToHSL(vibrant, null, 75)}; }
+            body.light .hero.light .hero__categories__item:nth-of-type(3) { background-color: ${hexToHSL(vibrant, null, 80)}; }
+            body.light .hero.light .hero__categories__item:nth-of-type(4) { background-color: ${hexToHSL(vibrant, null, 85)}; }
+            body.light .hero.light .hero__categories__item:nth-of-type(5) { background-color: ${hexToHSL(vibrant, null, 90)}; }
+            body.light .hero.light .hero__categories__item:nth-of-type(6) { background-color: ${hexToHSL(vibrant, null, 95)}; }
+
             article a:link, article a:visited {
               color: ${color_link};
             }
@@ -46,7 +70,7 @@ class Layout extends React.Component {
     
     return (
       <Wrapper>
-          <header className={`navbar ${theme}`}>
+          <header className={`navbar ${theme}${hero}`}>
             <h1
               className='header__title' 
               title={title}
@@ -57,6 +81,20 @@ class Layout extends React.Component {
                 />
               </Link>
             </h1>
+            <ThemeToggler>
+              {({ theme, toggleTheme }) => (
+                <label className="darkmode__switch" >
+                  <input
+                    className="darkmode__switch__input"
+                    aria-label="Toggle Dark Mode"
+                    type="checkbox"
+                    onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
+                    checked={theme === 'dark'}
+                  />
+                  <span className="darkmode__switch__slider"></span>
+                </label>
+              )}
+            </ThemeToggler>
             <nav className='menu'>
               <input type="checkbox" id="menu" className="menu__hidden" aria-label="Open Menu"/>
               <label htmlFor="menu" className="menu__open">
