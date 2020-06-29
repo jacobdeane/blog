@@ -395,6 +395,19 @@ article {
 	padding: 1.618rem calc(1rem + env(safe-area-inset-left));
 }
 
+article p > img { 
+    display:block; 
+    margin: auto;
+}
+
+figcaption {
+    text-align: center;
+    font-size: .875rem;
+    color: rgba(0,0,0,0.6);
+    font-style: italic;
+    font-weight: 200;
+}
+
 @media only screen and ( min-width: $content_width ) {
 	article { text-align: justify; }
 }
