@@ -31,6 +31,10 @@ class BlogPostTemplate extends React.Component {
 
     //get the categories
     let categories = post.frontmatter.other_categories
+    //check that we actually filled out the other categories box...
+    if (categories === null) {
+      categories = ["news"]
+    }
     categories.sort()
 
     let theme = ''
@@ -58,28 +62,51 @@ class BlogPostTemplate extends React.Component {
       article_title = article_date = ""
     }
 
-    return (
-      <Layout 
-        location={this.props.location} 
-        title={siteTitle} 
-        theme={theme}
-        hero={hero_class}
-        vibrant={post.frontmatter.hero_image.colors.vibrant}
-        lightMuted={post.frontmatter.hero_image.colors.lightMuted}
-        darkMuted={post.frontmatter.hero_image.colors.darkMuted}
-      >
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
-        {hero}
-        <article>
-          {article_title}
-          {article_date}
-          <MDXRenderer>{post.body}</MDXRenderer>
-          </article>
-      </Layout>
-    )
+
+    if (post.frontmatter.hero_image) { //TODO - make this nicer. Must be a better way to not pass invalid data
+
+      return (
+        <Layout 
+          location={this.props.location} 
+          title={siteTitle} 
+          theme={theme}
+          hero={hero_class}
+          vibrant={post.frontmatter.hero_image.colors.vibrant}
+          lightMuted={post.frontmatter.hero_image.colors.lightMuted}
+          darkMuted={post.frontmatter.hero_image.colors.darkMuted}
+        >
+          <SEO
+            title={post.frontmatter.title}
+            description={post.frontmatter.description || post.excerpt}
+          />
+          {hero}
+          <article>
+            {article_title}
+            {article_date}
+            <MDXRenderer>{post.body}</MDXRenderer>
+            </article>
+        </Layout>
+      )
+
+    } else {
+      return (
+        <Layout 
+          location={this.props.location} 
+          title={siteTitle} 
+        >
+          <SEO
+            title={post.frontmatter.title}
+            description={post.frontmatter.description || post.excerpt}
+          />
+          {hero}
+          <article>
+            {article_title}
+            {article_date}
+            <MDXRenderer>{post.body}</MDXRenderer>
+            </article>
+        </Layout>
+      )
+    }
   }
 }
 
