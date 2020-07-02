@@ -394,6 +394,17 @@ article {
 	padding: 1.618rem calc(1rem + env(safe-area-inset-left));
 }
 
+p.date {
+    line-height: 1.618rem;
+    display: block;
+    margin-bottom: 1.618rem;
+    margin-top: -1.618rem;
+    font-size: .75em;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
 article p > img { 
     display:block; 
     margin: auto;

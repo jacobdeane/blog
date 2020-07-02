@@ -14,11 +14,17 @@ import "./layout.scss"
 
 class Layout extends React.Component {
   render() {
-    const { title, children, theme, hero, vibrant, lightMuted, darkMuted } = this.props
+    const { title, children, theme, hero, menu } = this.props
 
     let global_styles = ""
 
-    if(vibrant) {
+    if(hero) {
+
+      //set the colors for easy reference...
+      const vibrant = hero.colors.vibrant
+      const lightMuted = hero.colors.lightMuted
+      const darkMuted = hero.colors.darkMuted
+
       const color_link = hexToHSL(vibrant, null, 50)
       const color_link_hover = hexToHSL(vibrant, null, 75)
       const color_selection = hexToHSL(vibrant)
@@ -70,7 +76,7 @@ class Layout extends React.Component {
     
     return (
       <Wrapper>
-          <header className={`navbar ${theme}${hero}`}>
+          <header className={`navbar ${theme}${menu}`}>
             <h1
               className='header__title' 
               title={title}
