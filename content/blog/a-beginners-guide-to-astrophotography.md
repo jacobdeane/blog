@@ -90,11 +90,11 @@ The William Optics ZS61 uses FPL53 glass made by Ohara in Japan who also make th
 
 <div class="gallery gallery__four">
 
-![](../assets/DSC05812.jpg)
+![](../assets/DSC05810.jpg)
 
-![](../assets/DSC05804.jpg)
+![](../assets/DSC05807.jpg)
 
-![](../assets/DSC05811.jpg)
+![](../assets/DSC05813.jpg)
 
 ![](../assets/DSC05808.jpg)
 

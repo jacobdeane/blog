@@ -114,6 +114,10 @@ $content_width: 836px;
 	.hero { min-height: 30em; }
 }
 
+@media only screen and ( min-width: 768px ) {
+    .hero__text { padding: 3.236rem calc(2rem + env(safe-area-inset-left)); }
+}
+
 @media only screen and ( min-width: 1400px ) {
 	.hero {
 		margin-bottom: 3.236rem;

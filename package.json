@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-personal-starter-blog",
+  "name": "jacobdeane.com",
   "private": true,
-  "description": "A personal blog starter for a blog powered by Netlify CMS, based on the default blog starter",
-  "version": "1.0.0",
-  "author": "Thomas Wang <thomas@wang.sh>",
+  "description": "The personal blog of Jacob Deane",
+  "version": "0.9",
+  "author": "Jacob Deane",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/jacobdeane/blog/issues"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -59,7 +59,7 @@
     "redux": "^3.7.2",
     "yup": "^0.27.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/jacobdeane/blog#readme",
   "keywords": [
     "gatsby"
   ],
@@ -67,7 +67,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/jacobdeane/blog.git"
   },
   "scripts": {
     "build": "gatsby build",
