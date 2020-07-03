@@ -1,11 +1,12 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
-//import Button from "../components/button"
+
+import "./index.scss"
 
 class Blog extends React.Component {
   render() {
@@ -15,31 +16,40 @@ class Blog extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title="All posts" location={this.props.location.pathname} />
         <Bio />
         <div >
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
-              <article key={node.fields.slug}>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <Link
-                    style={{ boxShadow: `none` }}
-                    to={`${node.frontmatter.category}/${node.frontmatter.year}${node.fields.slug}`}
-                  >
-                    {title}
-                  </Link>
-                </h3>
-                <small>{node.frontmatter.date}</small>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
+              <article key={node.fields.slug} className='post'>
+                <Link to={`${node.frontmatter.category}/${node.frontmatter.year}${node.fields.slug}`} >
+                  <Img
+                    className='post__img'
+                    fluid={node.frontmatter.hero_image.childImageSharp.fluid} 
+                  />
+                </Link>
+                <div className='post__text'>
+                  <p className='post__date'>{node.frontmatter.date} &#8226; {node.timeToRead} min read</p>
+                  <h1 className='post__title'>
+                    <Link to={`${node.frontmatter.category}/${node.frontmatter.year}${node.fields.slug}`} >
+                      {title}
+                    </Link>
+                  </h1>
+                  <p
+                    className='post__excerpt'
+                    dangerouslySetInnerHTML={{
+                      __html: node.frontmatter.description || node.excerpt,
+                    }}
+                  />
+                  <p>
+                    <Link
+                      className='post__link'
+                      to={`${node.frontmatter.category}/${node.frontmatter.year}${node.fields.slug}`}
+                    >Read More
+                    </Link>
+                  </p>
+                </div>
               </article>
             )
           })}
@@ -66,12 +76,28 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "Do MMMM YYYY")
             year: date(formatString: "YYYY")
             title
             description
             category
+            hero_image {
+              childImageSharp{
+                fluid(maxWidth: 640, quality:75){
+                  base64
+                  originalImg
+                  originalName
+                  sizes
+                  src
+                  srcSet
+                  aspectRatio
+                  presentationHeight
+                  presentationWidth
+                }
+              }
+            }
           }
+          timeToRead
         }
       }
     }

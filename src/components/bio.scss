@@ -1,0 +1,26 @@
+$content_width: 836px;
+
+.bio {
+	margin: auto;
+	max-width: $content_width;
+	padding: 3rem calc(1rem + env(safe-area-inset-left));
+}
+
+.bio__heading {
+	font-weight: 300;
+	line-height: 1.25;
+}
+
+@media only screen and ( min-width: 768px ) {
+    .bio { padding: 3rem calc(2rem + env(safe-area-inset-left)); }
+}
+
+@media only screen and ( min-width: 1400px ) {
+    .bio {
+        max-width: 1236px;
+    }
+
+    .bio__heading {
+    	max-width: $content_width;
+    }
+}

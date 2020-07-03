@@ -8,8 +8,6 @@ import hexToHSL from "../utils/hexToHSL"
 
 import SiteLogo from "../../content/assets/logo.svg"
 
-//import { rhythm, scale } from "../utils/typography"
-
 import "./layout.scss"
 
 class Layout extends React.Component {

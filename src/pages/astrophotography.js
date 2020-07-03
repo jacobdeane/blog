@@ -15,7 +15,7 @@ class Astrophotography extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title="Astrophotography" location={this.props.location.pathname} />
         <div>
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
