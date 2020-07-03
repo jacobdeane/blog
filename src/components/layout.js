@@ -79,9 +79,10 @@ class Layout extends React.Component {
               className='header__title' 
               title={title}
             >
-              <Link to={`/`}>
+              <Link to={`/`} aria-label='home' title='home'>
                 <SiteLogo
                   id='logo'
+                  title='home'
                 />
               </Link>
             </h1>

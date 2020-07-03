@@ -30,7 +30,7 @@ $content_width: 836px;
     letter-spacing: 0.1em;
 	text-transform: uppercase;
 	margin-bottom: .5rem;
-	color: #999;
+	color: #666;
 }
 
 .post__title > a {
@@ -47,21 +47,19 @@ $content_width: 836px;
 
 .post__link {
 	text-decoration: none;
-	border-bottom: 1px solid #888;
+	border-bottom: 1px solid #333;
 	padding-bottom: .125em;
 
 }
-
-
 
 .dark {
 	.post__title > a {
 		color: rgb(204, 204, 204);
 	}
 	.post__date, .post__link {
-		color:#666;
+		color:#999;
 	}
-	.post__link { border-bottom-color: #333; }
+	.post__link { border-bottom-color: #666; }
 }
 
 @media only screen and ( min-width: 768px ) {

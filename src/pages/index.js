@@ -26,7 +26,9 @@ class Blog extends React.Component {
                 <Link to={`${node.frontmatter.category}/${node.frontmatter.year}${node.fields.slug}`} >
                   <Img
                     className='post__img'
-                    fluid={node.frontmatter.hero_image.childImageSharp.fluid} 
+                    fluid={node.frontmatter.hero_image.childImageSharp.fluid}
+                    alt={title}
+                    title={title}
                   />
                 </Link>
                 <div className='post__text'>
