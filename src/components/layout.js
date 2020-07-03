@@ -12,9 +12,12 @@ import "./layout.scss"
 
 class Layout extends React.Component {
   render() {
-    const { title, children, theme, hero, menu } = this.props
+    const { title, children, theme, hero } = this.props
 
     let global_styles = ""
+
+    //set the navbar class so the color works when there is a hero image.
+    const headerClass = theme ? 'navbar hashero ' + theme : 'navbar'
 
     if(hero) {
 
@@ -74,7 +77,7 @@ class Layout extends React.Component {
     
     return (
       <Wrapper>
-          <header className={`navbar ${theme}${menu}`}>
+          <header className={headerClass} >
             <h1
               className='header__title' 
               title={title}

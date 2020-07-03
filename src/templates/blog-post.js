@@ -17,8 +17,6 @@ class BlogPostTemplate extends React.Component {
     const articleDate = post.frontmatter.hero_image ? null : <p className='date'>{post.frontmatter.date}</p>
     // Set the hero theme based on if the image is dark or not
     const theme = post.frontmatter.dark_image ? 'dark' : 'light'
-    // Set the menu_class if we have a hero image
-    const menu_class = post.frontmatter.hero_image ? ' hashero' : null
     // Go get the hero (if we have a hero image)
     const hero = post.frontmatter.hero_image ? 
         <Hero
@@ -36,7 +34,6 @@ class BlogPostTemplate extends React.Component {
         location={this.props.location} 
         title={siteTitle} 
         theme={theme}
-        menu={menu_class}
         hero={post.frontmatter.hero_image}
       >
         <SEO
