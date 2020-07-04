@@ -11,7 +11,7 @@ class Preview extends React.Component {
 
   	return (
   		<article key={slug} className='post'>
-			<Link to={`${category}/${year}${slug}`} >
+			<Link to={`/${category}/${year}${slug}`} >
 				<Img
 				className='post__img'
 				fluid={fluid}
@@ -22,7 +22,7 @@ class Preview extends React.Component {
 			<div className='post__text'>
 				<p className='post__date'>{date} &#8226; {timeToRead} min read</p>
 				<h1 className='post__title'>
-					<Link to={`${category}/${year}${slug}`} >{title}</Link>
+					<Link to={`/${category}/${year}${slug}`} >{title}</Link>
 				</h1>
 				<p
 				className='post__excerpt'
@@ -33,7 +33,7 @@ class Preview extends React.Component {
 				<p>
 					<Link
 					className='post__link'
-					to={`${category}/${year}${slug}`}
+					to={`/${category}/${year}${slug}`}
 					>Read More
 					</Link>
 				</p>

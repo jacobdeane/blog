@@ -46,7 +46,7 @@ class BlogPostTemplate extends React.Component {
           {articleTitle}
           {articleDate}
           <MDXRenderer>{post.body}</MDXRenderer>
-          </article>
+        </article>
       </Layout>
     )
   }

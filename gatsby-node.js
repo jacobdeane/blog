@@ -7,6 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const page = path.resolve(`./src/templates/page.js`)
   const astroPost = path.resolve(`./src/templates/astrophotography-post.js`)
+  const category = path.resolve(`./src/templates/category.js`)
 
   return graphql(
     `
@@ -58,6 +59,20 @@ exports.createPages = ({ graphql, actions }) => {
             component: astroPost,
             context: {
               slug: post.node.fields.slug,
+            },
+          })
+
+          break;
+        case "categories":
+
+          const slug = post.node.fields.slug
+
+          createPage({
+            path: `${post.node.fields.slug}`,
+            component: category,
+            context: {
+              slug: slug,
+              category: slug.slice(1,-1),
             },
           })
 

@@ -1,21 +1,22 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Header from "../components/header"
 import Preview from "../components/preview"
 
-class Blog extends React.Component {
+class Category extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
+    const pageTitle = data.mdx.frontmatter.title + " Posts"
     const posts = data.allMdx.edges
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" location={this.props.location.pathname} />
-        <Bio />
+        <SEO title={pageTitle} location={this.props.location.pathname} />
+        <Header heading = {pageTitle} />
         <div >
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
@@ -38,16 +39,21 @@ class Blog extends React.Component {
   }
 }
 
-export default Blog
+export default Category
 
-export const pageQuery = graphql`
-  query {
+export const categoryQuery = graphql`
+  query CategoryBySlug($slug: String!, $category: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMdx(sort: {order: DESC, fields: [frontmatter___date]}, limit: 1000, filter: {fields: {sourceInstanceName: {eq: "blog"}}}) {
+    mdx(fields: {slug: {eq: $slug}}) {
+      frontmatter {
+        title
+      }
+    }
+    allMdx(sort: {order: DESC, fields: [frontmatter___date]}, limit: 1000, filter: {fields: {sourceInstanceName: {eq: "blog"}}, frontmatter: {other_categories: {eq: $category}}}) {
       edges {
         node {
           excerpt
@@ -82,3 +88,4 @@ export const pageQuery = graphql`
     }
   }
 `
+console.log(categoryQuery)
