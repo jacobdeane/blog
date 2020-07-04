@@ -5,8 +5,7 @@ import Img from "gatsby-image"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
-import "./index.scss"
+import Preview from "../components/preview"
 
 class Blog extends React.Component {
   render() {
@@ -22,37 +21,16 @@ class Blog extends React.Component {
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
-              <article key={node.fields.slug} className='post'>
-                <Link to={`${node.frontmatter.category}/${node.frontmatter.year}${node.fields.slug}`} >
-                  <Img
-                    className='post__img'
-                    fluid={node.frontmatter.hero_image.childImageSharp.fluid}
-                    alt={title}
-                    title={title}
-                  />
-                </Link>
-                <div className='post__text'>
-                  <p className='post__date'>{node.frontmatter.date} &#8226; {node.timeToRead} min read</p>
-                  <h1 className='post__title'>
-                    <Link to={`${node.frontmatter.category}/${node.frontmatter.year}${node.fields.slug}`} >
-                      {title}
-                    </Link>
-                  </h1>
-                  <p
-                    className='post__excerpt'
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
-                    }}
-                  />
-                  <p>
-                    <Link
-                      className='post__link'
-                      to={`${node.frontmatter.category}/${node.frontmatter.year}${node.fields.slug}`}
-                    >Read More
-                    </Link>
-                  </p>
-                </div>
-              </article>
+              <Preview
+                slug={node.fields.slug}
+                category={node.frontmatter.category}
+                year={node.frontmatter.year}
+                fluid={node.frontmatter.hero_image.childImageSharp.fluid}
+                title={title}
+                date={node.frontmatter.date}
+                timeToRead={node.timeToRead}
+                excerpt={node.frontmatter.description || node.excerpt}
+              />
             )
           })}
         </div>
