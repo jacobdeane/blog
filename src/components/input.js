@@ -13,10 +13,10 @@ class Input extends React.Component {
       )
     }
 
-  	const input = (type === 'textarea') ? <textarea name={name} aria-label={label}  placeholder={placeholder} ></textarea> : <input type={type} name={name} aria-label={label} placeholder={placeholder} />
+  	const input = (type === 'textarea') ? <textarea name={name} aria-label={label}  placeholder={placeholder} required ></textarea> : <input type={type} name={name} aria-label={label} placeholder={placeholder} required />
 
   	return (
-  		<label className="has-float-label" htmlFor={name}>
+  		<label className="has-float-label" htmlFor={name} >
 		  {input}
 		  <span>{label}</span>
 		</label>
