@@ -1,0 +1,139 @@
+@mixin float-label-container {
+  display: block;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+@mixin float-label {
+  label, > span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: text;
+    font-size: .75rem;
+    opacity: 1;
+    transition: all .2s;
+    pointer-events: none;
+    @content;
+  }
+}
+
+@mixin float-label-input {
+  &::placeholder {
+    opacity: 1;
+    transition: all .2s;
+  }
+  &:placeholder-shown:not(:focus)::placeholder {
+      opacity: 0;
+  }
+}
+
+@mixin float-label-scaled {
+  &:placeholder-shown:not(:focus) + * {
+      font-size: 1.5rem;
+      opacity: .5;
+      @content;
+  }
+}
+
+.has-float-label {
+  @include float-label-container;
+
+  @include float-label;
+
+  select {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+  }
+
+  input, select, textarea {
+    @include float-label-input;
+    width: 100%;
+    font-size: 1.5rem;
+    padding-top: 1em;
+    margin-bottom: 2px;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 2px solid rgba(0,0,0,.1);
+
+    @include float-label-scaled {
+      top: 1em;
+    }
+
+    &::placeholder {
+      color: rgba(0,0,0,.25);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(0,0,0,.5);
+    }
+  }
+
+  textarea {
+    height: 8em;
+  }
+
+  select {
+    padding-right: 1em;
+    background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .5em bottom .25em;
+    background-size: 8px 10px;
+  }
+}
+
+.input__submit {
+  width: 100%;
+  display: block;
+  border: none;
+  text-align: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  padding: .75em 1.5em;
+  cursor: pointer;
+  font-family:
+  SFMono-Regular,
+  Menlo,
+  Monaco,
+  Consolas,
+  "Liberation Mono",
+  "Courier New",
+  monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: hsl(0,0,20);
+  color: white;
+  border-radius: .25em;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &:hover, &:focus {
+    background: hsl(0,0,40);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@media only screen and ( min-width: 768px ) {
+  .input__submit {
+    width: auto;
+  }
+}
+
+.dark {
+  .has-float-label {
+    input, select, textarea {
+      background:black;
+      color: #ccc;
+      border-bottom: 2px solid rgba(255,255,255,.15);
+
+      &:focus {
+        border-color: rgba(255,255,255,.5);
+      }
+    }
+  }
+}
