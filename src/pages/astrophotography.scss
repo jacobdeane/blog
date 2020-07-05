@@ -1,0 +1,136 @@
+$content_width: 836px;
+
+.astroimage__wrapper {
+	max-width: $content_width;
+	margin: auto;
+	padding: 0 calc(1rem + env(safe-area-inset-left));
+	display: grid;
+	grid-gap: 1.618rem;
+	grid-template-columns: 1fr;
+}
+
+.astroimage {
+	position: relative;
+	width: 100%;
+	max-width: unset;
+	height: 0;
+	margin: 0;
+	padding: 100% 0 0 0;
+	overflow: hidden;
+	opacity: 1;
+	transition: filter 250ms ease-in-out,
+				box-shadow 250ms ease-in-out,
+              	transform 150ms ease;
+    
+    &:hover, &:focus {
+    	filter: brightness(125%) grayscale(25%);
+    	box-shadow: 0 2px 2px rgba(0,0,0,0.1),0 4px 4px rgba(0,0,0,0.1),0 8px 8px rgba(0,0,0,0.1),0 16px 16px rgba(0,0,0,0.1),0 32px 32px rgba(0,0,0,0.1),0 64px 64px rgba(0,0,0,0.1);
+    }
+
+    &:active {
+    	transform: scale(0.99);
+    }
+}
+
+.astroimage__img, .astroimage__link {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.astroimage__link {
+	padding: 1.618rem;
+	display: table;
+	text-decoration: none;
+	color: white;
+}
+
+.astroimage__heading {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: 500;
+	font-size: 1.5rem;
+	font-family:
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+    letter-spacing: 0.1em;
+	text-transform: uppercase;
+	line-height: 1.25;
+}
+
+p.designations {
+    line-height: 1.618rem;
+    display: block;
+    margin-bottom: 1.618rem;
+    margin-top: -1.618rem;
+    font-size: .75em;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+	color: #999;
+}
+
+.details__heading {
+    line-height: 1.618rem;
+    font-size: .75em;
+    display: block;
+    margin-bottom: 0;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+	font-weight: normal;
+}
+
+.details {
+	list-style: none;
+	margin-left: 0;
+	font-size: .75em;
+	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+	> li {
+		margin: 0;
+	    color: #999;
+
+	    > span {
+		    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+		    letter-spacing: 0.1em;
+	    }
+	}
+}
+
+.column__wrapper {
+	display: grid;
+	grid-column-gap: 1.618rem;
+	grid-template-columns: 1fr;
+}
+
+@media only screen and ( min-width: 480px ) {
+	.astroimage__wrapper { grid-template-columns: 1fr 1fr; }
+	.astroimage__heading { font-size: 1.25em; }
+}
+
+@media only screen and ( min-width: 768px ) {
+	.astroimage__wrapper {
+		padding: 0 calc(2em + env(safe-area-inset-left));
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.column__wrapper { grid-template-columns: 1fr 1fr; }
+}
+
+@media only screen and ( min-width: 1400px ) {
+    .astroimage__wrapper {
+        max-width: 1236px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .astroimage__heading { font-size: 1.5em; }
+}

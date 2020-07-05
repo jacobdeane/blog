@@ -64,7 +64,6 @@ export const categoryQuery = graphql`
             date(formatString: "Do MMMM YYYY")
             year: date(formatString: "YYYY")
             title
-            description
             category
             hero_image {
               childImageSharp{
@@ -88,4 +87,3 @@ export const categoryQuery = graphql`
     }
   }
 `
-console.log(categoryQuery)

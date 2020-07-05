@@ -71,7 +71,6 @@ export const pageQuery = graphql`
         date(formatString: "Do MMMM YYYY")
         category
         other_categories
-        description
         hero_image {
           childImageSharp{
             fluid(maxWidth: 1920){

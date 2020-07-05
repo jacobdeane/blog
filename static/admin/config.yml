@@ -63,17 +63,22 @@ collections:
     label_singular: Astro Image
     folder: content/astrophotography
     create: true
-    media_folder: /content/assets/astro
-    public_folder: ../assets/astro
     fields:
       - { name: title, label: Title }
-      - name: image 
+      - name: designations
+        label: Designations
+        label_singular: Designation
+        widget: list
+        summary: '{{fields.designation}}'
+        field: { label: Designation, name: designation }
+        required: false
+      - name: hero_image 
         label: Image
         widget: image
-        required: false
         media_library:
           config: 
             multiple: false
+      - { name: body, label: Description, widget: markdown, required: false }
       - { name: start_date, label: Imaging Start Date, widget: date, required: false }
       - { name: end_date, label: Imaging End Date, widget: date, required: false }
       - { name: location, label: Imaging Location, required: false }
@@ -88,7 +93,33 @@ collections:
         pattern: ['[+-][0-9]{2}[ ][0-9]{2}[ ][0-9]{2}[.]*[0-9]*', "±DD MM SS.S"]
         required: false
       - { name: distance, label: Distance from Earth, hint: Light Years, widget: number, required: false }
-      - { name: description, label: Description, widget: markdown, required: false }
+      - { name: telescope, label: Imaging Telescope, required: false }
+      - { name: camera, label: Imaging Camera, required: false }
+      - { name: mount, label: Mount, required: false }
+      - name: exposure_details
+        label: Exposure Details
+        widget: list
+        summary: '{{fields.filter}}: {{fields.multiple}} x {{fields.sub}} seconds'
+        fields:
+          - name: filter
+            label: Filter
+            widget: select
+            options:
+              - { label: Luminance, value: Luminance }
+              - { label: Red, value: R }
+              - { label: Green, value: G }
+              - { label: Blue, value: B }
+              - { label: Hydrogen Alpha, value: Ha }
+              - { label: Oxygen III, value: OIII }
+              - { label: Sulpher II, value: SII }
+          - name: multiple
+            label: Number of sub-exposures
+            widget: number
+          - name: sub
+            label: Length of sub-exposures (seconds)
+            widget: number
+            hint: seconds
+      - { name: shopcode, label: Shopify Code, widget: text, required: false }
   
   - name: categories
     label: Categories
