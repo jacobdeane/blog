@@ -16,7 +16,7 @@ class ContactPage extends React.Component {
         <article>
           <h1>Contact</h1>
           <p>Please enter your contact details and a short message below and I will try to answer your query as soon as possible.</p>
-          <form name="contact" method="POST" data-netlify="true" netlify>
+          <form name="contact" method="POST" action="/success" data-netlify="true" netlify>
             <input type="hidden" name="form-name" value="contact" aria-label="form name" />
 
             <Input

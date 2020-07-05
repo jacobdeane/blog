@@ -101,16 +101,20 @@
   monospace;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: hsl(0,0,20);
-  color: white;
-  border-radius: .25em;
-  transition: background 250ms ease-in-out, 
+  background: white;
+  color: black;
+  border: 3px solid black;
+  border-radius: .5em;
+  transition: background 250ms ease-in-out,
+              color 250ms ease-in-out,
+              border-color 250ms ease-in-out,
               transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
 
   &:hover, &:focus {
-    background: hsl(0,0,40);
+    background: black;
+    color: white;
   }
 
   &:active {
@@ -134,6 +138,17 @@
       &:focus {
         border-color: rgba(255,255,255,.5);
       }
+    }
+  }
+  .input__submit {
+    color: #ccc;
+    border-color: #ccc;
+    background: black;
+
+    &:hover, &:focus {
+      background: white;
+      border-color: white;
+      color: black;
     }
   }
 }
