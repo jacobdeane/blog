@@ -22,7 +22,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-extract-image-colors',
       options: {
-        extensions: ['jpg', 'jpeg', 'png']
+        extensions: ['jpg', 'jpeg']
       }
     },
     {
