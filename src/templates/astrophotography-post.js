@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import getConstellation from "../utils/constellation"
+import {parse_coordinates} from "../utils/constellation"
 import dateRange from "../utils/dateRange"
 import sformat from "../utils/functions"
 
@@ -18,7 +19,7 @@ class AstroPostTemplate extends React.Component {
 
     const designations = post.frontmatter.designations ? <p className="designations">(Also known as: {post.frontmatter.designations.join(', ').replace(/,(?=[^,]*$)/, ' &')})</p> : null
     
-    let ra, dec, constellation, date = null;
+    let ra, dec, constellation, date, virtualsky = null;
     
     //RA
     if (post.frontmatter.ra) {
@@ -37,6 +38,10 @@ class AstroPostTemplate extends React.Component {
       const decimalCoords = post.frontmatter.ra + ' ' + post.frontmatter.dec
       const constellationName = getConstellation(decimalCoords)
       constellation = <li>{constellationName}</li>
+
+      //VirtualSky
+      const coords = parse_coordinates(decimalCoords)
+      virtualsky = <iframe title="VirtualSky" width="800" height="400" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" src={"https://virtualsky.lco.global/embed/index.html?gradient=false&projection=gnomic&negative=false&showdate=false&showposition=false&showplanets=false&ra=" + 15 * coords[0] + "&dec=" + coords[1] + "&constellations=true&scalestars=1.5&fov=90&mouse=false&keyboatd=false&ground=false&constellationwidth=0.25"} ></iframe>
     }
     
     //Distance
@@ -91,6 +96,7 @@ class AstroPostTemplate extends React.Component {
             </ul>
           </div>
         </div>
+        {virtualsky}
         </article>
       </Layout>
     )
