@@ -96,14 +96,14 @@ p.designations {
 	margin-left: 0;
 	font-size: .75em;
 	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	letter-spacing: 0.025em;
 
 	> li {
 		margin: 0;
 	    color: #999;
 
-	    > span {
-		    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-		    letter-spacing: 0.1em;
+	    &.total {
+	    	margin-top: 1.5em;
 	    }
 	}
 }
