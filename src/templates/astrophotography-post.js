@@ -58,7 +58,6 @@ class AstroPostTemplate extends React.Component {
       url.searchParams.set("keyboard", "false")
       url.searchParams.set("ground", "false")
       url.searchParams.set("fontfamily","monospace")
-      url.searchParams.set("color","#666666")
       url.searchParams.set("negative", "false")
 
       const virtualskyDark = (
