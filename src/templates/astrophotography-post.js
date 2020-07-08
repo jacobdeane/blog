@@ -33,15 +33,75 @@ class AstroPostTemplate extends React.Component {
       dec = <li>DEC: {decArray[0]}<sup>&deg;</sup> {decArray[1]}<sup>'</sup> {decArray[2]}<sup>"</sup></li>
     }
     
-    //Constellation
     if (post.frontmatter.ra && post.frontmatter.dec) {
+      //Constellation
       const decimalCoords = post.frontmatter.ra + ' ' + post.frontmatter.dec
       const constellationName = getConstellation(decimalCoords)
       constellation = <li>{constellationName}</li>
 
       //VirtualSky
       const coords = parse_coordinates(decimalCoords)
-      virtualsky = <iframe title="VirtualSky" width="800" height="400" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" src={"https://virtualsky.lco.global/embed/index.html?gradient=false&projection=gnomic&negative=false&showdate=false&showposition=false&showplanets=false&ra=" + 15 * coords[0] + "&dec=" + coords[1] + "&constellations=true&scalestars=1.5&fov=90&mouse=false&keyboatd=false&ground=false&constellationwidth=0.25"} ></iframe>
+      
+      let url = new URL("https://virtualsky.lco.global/embed/index.html")
+      url.searchParams.set("gradient", "false")
+      url.searchParams.set("projection", "gnomic")
+      url.searchParams.set("showdate", "false")
+      url.searchParams.set("showposition", "false")
+      url.searchParams.set("showplanets", "false")
+      url.searchParams.set("cardinalpoints", "false")
+      url.searchParams.set("ra", 15 * coords[0])
+      url.searchParams.set("dec", coords[1])
+      url.searchParams.set("constellations", "true")
+      url.searchParams.set("scalestars", "1.5")
+      url.searchParams.set("fov", "90")
+      url.searchParams.set("mouse", "false")
+      url.searchParams.set("keyboard", "false")
+      url.searchParams.set("ground", "false")
+      url.searchParams.set("fontfamily","monospace")
+      url.searchParams.set("color","#666666")
+      url.searchParams.set("negative", "false")
+
+      const virtualskyDark = (
+        <iframe 
+          className="virtualsky dark"
+          title="virtualskyDark" 
+          width="800" 
+          height="400" 
+          frameBorder="0" 
+          scrolling="no" 
+          marginHeight="0" 
+          marginWidth="0" 
+          src={url.href} 
+        ></iframe>)
+
+      //set the iframe for a white background
+      url.searchParams.set("negative", "true")
+
+      const virtualskyLight = (
+        <iframe 
+          className="virtualsky light"
+          title="virtualskyLight" 
+          width="800" 
+          height="400" 
+          frameBorder="0" 
+          scrolling="no" 
+          marginHeight="0" 
+          marginWidth="0" 
+          src={url.href} 
+        ></iframe>)
+
+      virtualsky = (
+        <div className="virtualsky__wrapper">
+          {virtualskyLight}
+          {virtualskyDark}
+          <div className="virtualsky__reticle__wrapper">
+            <div className="virtualsky__reticle">
+            </div>
+            <label className="virtualsky__reticle__label">{post.frontmatter.title}</label>
+          </div>
+        </div>
+      )
+
     }
     
     //Distance
@@ -85,7 +145,12 @@ class AstroPostTemplate extends React.Component {
           <div className="column">
             <h4 className="details__heading">Image Details:</h4>
             <ul className="details">
-              {ra}{dec}{constellation}{distance}{location}{date}
+              {ra}
+              {dec}
+              {constellation}
+              {distance}
+              {location}
+              {date}
             </ul>
           </div>
           <div className="column">
