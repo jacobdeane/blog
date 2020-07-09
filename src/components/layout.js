@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import { Global, css } from "@emotion/core"
-import styled from "styled-components"
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
 import hexToHSL from "../utils/hexToHSL"
@@ -76,7 +75,8 @@ class Layout extends React.Component {
     }
     
     return (
-      <Wrapper>
+      <div className='page__wrapper'>
+        <div className='page__body'>
           <header className={headerClass} >
             <h1
               className='header__title' 
@@ -129,24 +129,36 @@ class Layout extends React.Component {
             </nav>
           </header>
           <main>{children}</main>
-        <Footer>
-          © {new Date().getFullYear()} Jacob Deane
-        </Footer>
+        </div>
+        <footer className='footer'>
+          <div className='footer__text'>
+            <div className='footer__columns'>
+              <div>
+                <Link to={`/`} aria-label='home' title='home'>
+                  <SiteLogo
+                    className='footer__logo'
+                    title='home'
+                  />
+                </Link>
+                <p>Submarine designer by day, astrophotographer by night.</p>
+              </div>
+              <div></div>
+              <div>
+                <Link className="footer__link" to="/contact/"><button className="footer__button">Contact Me</button></Link>
+              </div>
+            </div>
+            <ul className='legal__list'>
+              <li className='legal__list__item'>© {new Date().getFullYear()} Jacob Deane</li>
+              <li className='legal__list__item'><Link to="/privacy/">Privacy</Link></li>
+              <li className='legal__list__item'><Link to="/terms-and-conditions/">Terms<span className="notMobile" > & Conditions</span></Link></li>
+            </ul>
+          </div>
+        </footer>
         {global_styles}
-      </Wrapper>
+      </div>
     )
   }
 }
-
-const Wrapper = styled.div`
-  min-height: 100vh;
-  position: relative;
-`
-
-const Footer = styled.footer`
-  text-align: center;
-  margin: 24px;
-`
 
 const ListLink = props => (
   <li className='menu__item'>
