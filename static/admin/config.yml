@@ -119,7 +119,6 @@ collections:
             label: Length of sub-exposures (seconds)
             widget: number
             hint: seconds
-      - { name: shopcode, label: Shopify Code, widget: text, required: false }
   
   - name: categories
     label: Categories
