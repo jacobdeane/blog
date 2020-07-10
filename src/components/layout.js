@@ -5,7 +5,11 @@ import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
 import hexToHSL from "../utils/hexToHSL"
 
-import SiteLogo from "../../content/assets/logo.svg"
+import SiteLogo from "../../static/logo.svg"
+import LinkedInLogo from "../../static/linkedin.svg"
+import InstagramLogo from "../../static/instagram.svg"
+import PinterestLogo from "../../static/pinterest.svg"
+import VimeoLogo from "../../static/vimeo.svg"
 
 import "./layout.scss"
 
@@ -133,6 +137,7 @@ class Layout extends React.Component {
         <footer className='footer'>
           <div className='footer__text'>
             <div className='footer__columns'>
+              
               <div>
                 <Link to={`/`} aria-label='home' title='home'>
                   <SiteLogo
@@ -141,17 +146,36 @@ class Layout extends React.Component {
                   />
                 </Link>
                 <p>Submarine designer by day, astrophotographer by night.</p>
-              </div>
-              <div></div>
-              <div>
                 <Link className="footer__link" to="/contact/"><button className="footer__button">Contact Me</button></Link>
               </div>
+              
+              <div>
+                <h2 className="category__list__title">Read more about:</h2>
+                <ul className="category__list">
+                  <ListLink to="/astronomy">Astronomy</ListLink>
+                  <ListLink to="/audio-visual">Audio/Visual</ListLink>
+                  <ListLink to="/home-automation">Home Automation</ListLink>
+                  <ListLink to="/iot">Internet of Things</ListLink>
+                  <ListLink to="/smart-home">Smart Home</ListLink>
+                  <ListLink to="/technology">Technology</ListLink>
+                </ul>
+              </div>
+            
             </div>
+
+            <ul className="social__list">
+              <SocialLink class="linkedin" to="https://www.linkedin.com/in/jacobdeane/" title="Linked In"><LinkedInLogo /></SocialLink>
+              <SocialLink class="instagram" to="https://www.instagram.com/jd_astronomy/" title="Instagram"><InstagramLogo /></SocialLink>
+              <SocialLink class="pinterest" to="https://pinterest.com/jacobdeane" title="Pinterest"><PinterestLogo /></SocialLink>
+              <SocialLink class="vimeo" to="https://vimeo.com/jacobdeane" title="Vimeo"><VimeoLogo /></SocialLink>
+            </ul>
+
             <ul className='legal__list'>
               <li className='legal__list__item'>© {new Date().getFullYear()} Jacob Deane</li>
               <li className='legal__list__item'><Link to="/privacy/">Privacy</Link></li>
               <li className='legal__list__item'><Link to="/terms-and-conditions/">Terms<span className="notMobile" > & Conditions</span></Link></li>
             </ul>
+
           </div>
         </footer>
         {global_styles}
@@ -164,6 +188,12 @@ const ListLink = props => (
   <li className='menu__item'>
     <Link to={props.to}>{props.children}</Link>
   </li>
+)
+
+const SocialLink = props => (
+  <li className="social__list__item">
+    <a className={props.class} href={props.to} rel="noopener noreferrer nofollow" target="_blank" title={props.title} aria-label={props.title}>{props.children}</a>
+  </li>      
 )
 
 export default Layout
