@@ -153,6 +153,7 @@ class Layout extends React.Component {
                 <h2 className="category__list__title">Read more about:</h2>
                 <ul className="category__list">
                   <ListLink to="/astronomy">Astronomy</ListLink>
+                  <ListLink to="/astrophotography">Astrophotography</ListLink>
                   <ListLink to="/audio-visual">Audio/Visual</ListLink>
                   <ListLink to="/home-automation">Home Automation</ListLink>
                   <ListLink to="/iot">Internet of Things</ListLink>
