@@ -9,9 +9,7 @@ hero_image: ../assets/m31-the-andromeda-galaxy.jpg
 dark_image: true
 excerpt: Astrophotography combines photography with astronomy - and it's
   incredible! With a modest amount of equipment you can literally take
-  photographs of space. It's probably one of the most technologically demanding
-  forms of photography, but this only makes it more rewarding when your time and
-  effort pays off.
+  photographs of space.
 ---
 Let me preface this by saying that this is a guide written by a beginner, rather than a guide for beginners, although I hope it is at least of some interest to people looking to get into this amazing hobby. Astrophotography is probably one of the most technically demanding types of photography; requiring specialist equipment, many hours of both imaging and processing, and a whole lot of patience!
 

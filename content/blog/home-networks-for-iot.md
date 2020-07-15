@@ -25,7 +25,7 @@ We should make the assumption that all devices are vulnerable and that all devic
 
 > Hope for the best, plan for the worst.
 >
-> \-- <cite>Jack Reacher (Lee Child)</cite>
+> <cite>Jack Reacher (Lee Child)</cite>
 
 If we make the assumption that our IOT devices pose a serious threat to other devices on our network, then our best defence is to seperate them from sensative data such as that contained on our PCs and smartphones.
 

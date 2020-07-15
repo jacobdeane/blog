@@ -10,7 +10,7 @@ excerpt: In a couple of weeks time, I’ll be taking part in HDTVtest’s annual
   Shootout, where 5 of the best TVs available today will be compared side by
   side by a group of AV enthusiasts to rank them in a number of categories.
 ---
-> UPDATE:The Panasonic EZ952 has been replaced with the flagship EZ1002 to avoid any doubt its the best on offer from Panasonic. HDTVtest have also secured a professional broadcast reference monitor to act as reference!
+<div class="info message"><p><span class="title">Update:</span> The Panasonic EZ952 has been replaced with the flagship EZ1002 to avoid any doubt its the best on offer from Panasonic. HDTVtest have also secured a professional broadcast reference monitor to act as reference!</p></div>
 
 In a couple of weeks time, I’ll be taking part in HDTVtest’s annual TV Shootout, where 5 of the best TVs available today will be compared side by side by a group of AV enthusiasts to rank them in a number of categories.
 

@@ -1,5 +1,3 @@
-$content_width: 836px;
-
 .navbar {
 	position: relative;
 	max-width: $content_width;
@@ -196,8 +194,8 @@ svg#logo {
 
 	.menu__container .menu__item > a:link, .menu__container .menu__item > a:visited {
 		opacity: 1;
-		font-size: 1em;
-		margin: .125em .5em;
+		font-size: .9em;
+		margin: .15em .5em;
 		padding: 0;
 		color: #000;
 		font-weight:300;
@@ -396,13 +394,17 @@ article {
 	padding: 1.618rem calc(1rem + env(safe-area-inset-left));
 }
 
+article p, article ul, article ol {
+    font-family: $serif;
+}
+
 p.date {
     line-height: 1.618rem;
     display: block;
     margin-bottom: 1.618rem;
     margin-top: -1.618rem;
     font-size: .75em;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: $monospace;
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
@@ -416,8 +418,76 @@ figcaption {
     text-align: center;
     font-size: .875rem;
     color: rgba(0,0,0,0.6);
+    font-family: $sans-serif;
     font-style: italic;
     font-weight: 200;
+}
+
+.message {
+    padding: 0.809rem 1.618rem;
+    margin-bottom: 1.618rem;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    border-left: 6px solid #666;
+
+    .title {
+        text-transform: uppercase;
+        color: #666;
+    }
+
+    p { margin: 0; }
+
+    &.info {
+        border-color: #45ABCD;
+        .title { color: #45ABCD; }
+    }
+    &.error {
+        border-color: #D73814;
+        .title { color: #D73814; }
+    }
+    &.warning {
+        border-color: #FEAF20;
+        .title { color: #FEAF20; }
+    }
+    &.success {
+        border-color: #80D651;
+        .title { color: #80D651; }
+    }
+}
+
+blockquote {
+     padding: .809rem 0 .809rem 1.618rem ;
+     margin:0 0 1.618rem 0;
+     border-left: 6px solid #ccc;
+     color: #666;
+
+     p {
+        font-size: 1.5em;
+        margin: 0;
+        &:before { content: '\201C'; }
+        &:after { content: '\201D'; }
+     }
+
+     cite {
+        color: #999;
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+        font-family: $monospace;
+        font-size: .75em;
+        letter-spacing: 0.1em;
+        font-style: normal;
+        text-transform: uppercase;
+        &:before { content: '\2014'; }
+     }
+}
+
+.dark {
+    blockquote {
+        border-left: 6px solid #222;
+
+        cite { color: #444; }
+    }
 }
 
 .footnote-ref, .footnote-backref {
@@ -562,7 +632,7 @@ body.dark {
 }
 
 .footer__columns p {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: $monospace;
     letter-spacing: 0.1em;
 }
 
@@ -582,7 +652,7 @@ body.dark {
     padding: .75em 1.5em;
     cursor: pointer;
     text-transform: uppercase;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: $monospace;
     letter-spacing: 0.1em;
     border-radius: .5em;
     background: black;
@@ -617,7 +687,7 @@ body.dark {
 }
 
 
-@media only screen and ( min-width: 768px ) {
+@media only screen and ( min-width: $ipad_portrait ) {
 
     .navbar { padding: 1.25rem calc(2rem + env(safe-area-inset-left)); }
     
@@ -668,17 +738,26 @@ body.dark {
 }
 
 @media only screen and ( min-width: $content_width ) {
-	article { text-align: justify; }
+    html { font-size: 120%; }
+	article { 
+        text-align: justify;
+        padding-bottom: 3.236rem;
+    }
 }
 
-@media only screen and ( min-width: 1400px ) {
+@media only screen and ( min-width: $desktop_wide ) {
     svg#logo { 
         height: 1em; 
     }
     .navbar, .footer__text {
         max-width: 1236px;
     }
-    .footer__columns {
-        
+    article.page {
+        max-width: 1236px;
+        padding-top: 3.236rem;
+        padding-bottom: 4.854rem;
+        h1, h2, h3, p, ul, ol, img, form {
+            max-width: $content_width;
+        }
     }
 }

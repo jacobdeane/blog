@@ -18,7 +18,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <article>
+        <article className="page">
           <h1>{post.frontmatter.title}</h1>
           <MDXRenderer>{post.body}</MDXRenderer>
         </article>

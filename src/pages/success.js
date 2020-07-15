@@ -12,7 +12,7 @@ class ThankYouPage extends React.Component {
         <SEO
           title="Thank you for your message"
         />
-        <article>
+        <article className="page">
           <h1>Thank you</h1>
           <p>Your message has been recieved and I'll endeavour and get back to you as soon as possible.</p>
         </article>

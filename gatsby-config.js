@@ -16,7 +16,6 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-feed-mdx`,
-    `gatsby-plugin-sass`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-dark-mode`,
     {
@@ -108,9 +107,28 @@ module.exports = {
           {
             resolve: `gatsby-remark-smartypants`,
           },
+          {
+            resolve: `gatsby-remark-footnotes`,
+            options: {
+              footnoteBackRefPreviousElementDisplay: "inline",
+              footnoteBackRefDisplay: "inline",
+              footnoteBackRefInnerText: "&#8635;", // Defaults to: "↩"
+              //use if you want the Wikipedia style ^ link without an underline beneath it
+              footnoteBackRefAnchorStyle: `text-decoration: none;`,
+              //use "front" for Wikipedia style ^ links
+              //footnoteBackRefInnerTextStartPosition: "front",
+              useFootnoteMarkerText: false // Defaults to false
+            }
+          }
         ],
         plugins: [`gatsby-remark-images`],
       },
+    },
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        data: `@import "${__dirname}/src/styles/variables";`,
+      }
     },
     /*{
       resolve: `gatsby-plugin-google-analytics`,
