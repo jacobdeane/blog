@@ -415,12 +415,12 @@ article p > img {
 }
 
 figcaption {
-    text-align: center;
-    font-size: .875rem;
-    color: rgba(0,0,0,0.6);
-    font-family: $sans-serif;
-    font-style: italic;
-    font-weight: 200;
+    margin-top: .5em;
+    font-size: .6rem;
+    font-family: $monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
 }
 
 .message {
@@ -484,9 +484,10 @@ blockquote {
 
 .dark {
     blockquote {
-        border-left: 6px solid #222;
+        color: #999;
+        border-left: 6px solid #333;
 
-        cite { color: #444; }
+        cite { color: #999; }
     }
 }
 
@@ -499,11 +500,6 @@ blockquote {
     color: rgba(0,0,0,0.6);
     font-weight: 200;
 }
-
-body.dark {
-    figcaption, .footnotes  { color: hsl(0,0,50); font-weight: 300; }
-}
-
 
 /* GALLERY WORKAROUNDS - NETLIFY CMS IS SOMEWHAT LIMITED CURRENTLY */
 
