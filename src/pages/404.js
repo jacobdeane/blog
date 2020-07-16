@@ -1,8 +1,10 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+import "./404.scss"
 
 class NotFoundPage extends React.Component {
   render() {
@@ -12,8 +14,11 @@ class NotFoundPage extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="404: Not Found" />
-        <h1>Not Found</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+        <article className="page fourofour">
+          <h1>404</h1>
+          <h2>Whoops! I seem to have lost this page. Sorry about that.</h2>
+          <p>Try finding what you are looking for on the <Link to={`/`}>homepage</Link>.</p>
+        </article>
       </Layout>
     )
   }
