@@ -3,6 +3,8 @@ $content_width: 836px;
 .post {
 	display: block;
 	text-align: left;
+	max-width: var(--max-width-wide);
+	margin: auto;
 }
 
 .post::after {
@@ -12,37 +14,34 @@ $content_width: 836px;
 }
 
 .post__img {
-	margin-bottom: 1.618rem;
+	margin-bottom: var(--space-md);
 	height: 0;
 	padding-bottom: 66.666666666%;
 }
 
 .post__date, .post__link {
-	font-size: .75em;
-	font-family:
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    "Liberation Mono",
-    "Courier New",
-    monospace;
+	font-size: .75rem;
+	font-family: var(--monospace);
     letter-spacing: 0.1em;
 	text-transform: uppercase;
 	margin-bottom: .5rem;
-	color: #666;
+	color: var(--color-text-subtle);
 }
 
-.post__title > a {
-	text-decoration: none;
-	color: rgba(0, 0, 0, 0.8);
+.post__title {
 	font-weight: 500;
 	font-size: 1.75rem;
-	line-height: 1;
+	max-width: var(--max-width-wide);
+
+	a {
+		text-decoration: none;
+		color: var(--color-text-heading);
+	}
 }
 
 .post__excerpt {
 	font-weight: 300;
+	max-width: var(--max-width-wide);
 }
 
 .post__link {
@@ -54,31 +53,29 @@ $content_width: 836px;
 
 .dark {
 	.post__title > a {
-		color: rgb(204, 204, 204);
+		color: var(--color-dark-text-heading);
 	}
 	.post__date, .post__link {
-		color:#999;
+		color: var(--color-dark-text-subtle);
 	}
 	.post__link { border-bottom-color: #666; }
 }
 
-@media only screen and ( min-width: 768px ) {
-
+@include breakpoint(tablet) {
 	.post__img {
-		width: calc(50% - .809rem);
+		width: calc(50% - .5 * var(--padding));
 		float: left;
-		margin-right: 1.618rem;
+		margin-right: var(--padding);
 		padding-bottom: 60%;
 	}
-
 }
 
-@media only screen and ( min-width: 1400px ) {
-	.post { max-width: 1236px; }
+@include breakpoint(laptop) {
+
 	.post__img {
 		padding-bottom: 33.333333333%;
 	}
 	.post__title > a {
-		font-size: 2rem;
+		font-size: 1.25em;
 	}
 }

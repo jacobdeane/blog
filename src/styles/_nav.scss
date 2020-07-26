@@ -1,0 +1,435 @@
+
+.navbar {
+	position: relative;
+	max-width: var(--max-width-wide);
+    height: 2em;
+	padding: var(--padding) var(--padding-safe);
+    margin: auto;
+}
+
+.navbar.hashero {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    max-width: calc(var(--max-width-wide) + 2 * var(--padding-safe) );
+}
+
+.header__title {
+	display: inline-block;
+	font-size: 1.5em;
+	margin: 0;
+
+    a {
+        display: inline-block;
+    }
+}
+
+svg#logo { 
+	height: .8em;
+	width: auto;
+    position: relative;
+    z-index: 1000;
+}
+
+@include breakpoint(phablet) {
+    svg#logo { 
+        height: 1em;
+    }
+}
+
+@include breakpoint(tablet) {
+    svg#logo {
+        height: .8em;
+        vertical-align: text-top;
+    }
+}
+
+
+.menu__hidden { display: none; }
+
+/* START OF MENU BUTTON */
+
+.menu__open {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 2.5rem;
+    height: 1.75rem;
+    cursor: pointer;
+    z-index: 2001;
+    border-radius: 50%;
+    padding: var(--padding);
+}
+
+.menu__open i {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: black;
+    -webkit-transition: background 0.5s ease;
+    -moz-transition: background 0.5s ease;
+    -ms-transition: background 0.5s ease;
+    -o-transition: background 0.5s ease;
+    transition: background 0.5s ease;
+    border-radius: 4px;
+}
+
+.menu__open i:nth-child(1) {
+    margin-top: 2px;
+    opacity: 1;
+}
+
+.menu__open i:nth-child(2) {
+    margin-top: 7px;
+    opacity: 1;
+}
+
+.menu__open i:nth-child(3) {
+    margin-top: 7px;
+}
+
+#menu:checked + .menu__open {
+   position: fixed;
+}
+
+@media only screen and ( min-width: 48.75em ) {
+    #menu:checked + .menu__open {
+        right: calc( ( 100% - var(--max-width-text)) / 2 - var(--padding));
+    }
+}
+
+#menu:checked + .menu__open i {
+    background: #fff;
+    transition: transform 0.2s ease;
+}
+
+#menu:checked + .menu__open i:nth-child(1) {
+    transform: translateY(.6rem) rotate(225deg);
+}
+
+#menu:checked + .menu__open i:nth-child(2) {
+    opacity: 0;
+}
+
+#menu:checked + .menu__open i:nth-child(3) {
+    transform: translateY(-.6rem) rotate(135deg);
+}
+
+/* END OF MENU BUTTON */
+
+/* START OF MOBILE MENU */
+
+.menu__container {
+    position: fixed;
+    visibility: hidden;
+    display: table;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: #111;
+    opacity: 0;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    padding: var(--padding) var(--padding-safe);
+    box-sizing: border-box;
+}
+
+#menu:checked ~ .menu__container {
+    z-index: 2000;
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu__list {
+	list-style: none;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: var(--sans-serif);
+}
+
+.menu__item {
+	display: block;
+	float: none;
+	width: 100%;
+    max-width: var(--max-width-text);
+    margin: auto;
+	text-align: right;
+	margin-bottom: var(--space-md);
+	position: none;
+}
+
+.menu__item > a:link, .menu__item > a:visited {
+	display: block;
+	outline: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1.5;
+    color: #ccc;
+    font-size: 1.5em;
+}
+
+.menu__item > a:hover, .menu__item > a:active {
+    color: #fff;
+}
+
+.menu__container .menu__item > a { 
+	opacity: 0;
+    transform: translateY(-0.5em);
+}
+
+#menu:checked ~ .menu__container .menu__item > a {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+@for $i from 1 through 10 {
+    #menu:checked ~ .menu__container .menu__item:nth-child(#{$i}n) > a {
+        transition-delay: #{$i * 0.1}s;
+    }
+}
+
+/* END OF MOBILE MENU */
+
+/* START OF LARGER MENU */
+
+@include breakpoint(ipad) {
+	
+	.menu__open { display: none; }
+
+	.menu {
+		display: inline-block;
+		float: right;
+	}
+
+	.menu__container {
+		opacity: 1;
+		visibility: visible;
+		display: inline-block;
+		position: relative;
+		width: auto;
+		height: auto;
+		background: transparent;
+		z-index: 1;
+		transition: none;
+        padding:0;
+        margin-right: var(--space-sm);
+	}
+
+	.menu__list {
+		display: block;
+		margin:0;
+	}
+
+	.menu__item {
+		display: inline-block;
+		width: auto;
+		margin: 0;
+	}
+
+    .menu__item:first-child { display: none; }
+
+	.menu__container .menu__item > a:link, .menu__container .menu__item > a:visited {
+		opacity: 1;
+		font-size: .8em;
+		margin: .6em;
+		padding: 0;
+		color: #000;
+		font-weight:300;
+	}
+
+	.menu__container .menu__item > a:hover, .menu__container .menu__item > a:active, .menu__container .menu__item > a[aria-current]:not([aria-current="false"]) { color: #000;}
+
+}
+
+@include breakpoint(laptop) {
+    .menu__item:first-child { display: inline-block; }
+}
+
+/* END OF LARGER MENU */
+
+/* START OF DARK MODE */
+
+body.dark {
+    background: black;
+    color: hsl(0,0,80);
+
+    svg#logo path {
+        fill: hsl(0,0,80);
+    }
+    .menu__open i {
+        background: hsl(0,0,80);
+    }
+    .menu__container .menu__item > a:link, .menu__container .menu__item > a:visited {
+        color: hsl(0,0,80);
+    }
+    .menu__container .menu__item > a:hover, .menu__container .menu__item > a:active {
+        color: white;
+    }
+
+    .navbar.hashero {
+        svg#logo path {
+        fill: white;
+        }
+        .menu__open i {
+            background: white;
+        }
+        .menu__container .menu__item > a:link, .menu__container .menu__item > a:visited {
+            color: white;
+        }
+    }
+
+}
+
+//and for when we have a dark hero on the light theme.
+
+.navbar.dark{
+    svg#logo path {
+        fill: white;
+    }
+    .menu__open i {
+        background: white;
+    }
+    .menu__container .menu__item > a:link, .menu__container .menu__item > a:visited {
+        color: white;
+    }
+}
+
+/* END OF DARK MODE */
+
+/* START OF DARK MODE SWITCH */
+
+.darkmode__switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    z-index: 10;
+    margin-left: .5rem;
+    border: solid 2px rgba(255,255,255,0.75);
+    border-radius: 14px;
+    box-sizing: content-box;
+    float: right;
+    margin-right: calc( 2 * var(--space-md) + 2rem );
+}
+
+.darkmode__switch__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.darkmode__switch__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.darkmode__switch__slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #F5EB42;
+    -webkit-transition: .2s;
+    transition: .2s;
+    border-radius: 50%;
+}
+
+.darkmode__switch__slider i {
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    background-color: hsla(0,0,100,0.75);
+    border-radius: 50%;
+    top:4px;
+    left: 16px;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.darkmode__switch__slider i:nth-of-type(2) {
+    top:6px;
+    left:24px;
+}
+.darkmode__switch__slider i:nth-of-type(3) {
+    top:12px;
+    left:10px;
+}
+.darkmode__switch__slider i:nth-of-type(4) {
+    top:18px;
+    left:8px;
+}
+.darkmode__switch__slider i:nth-of-type(5) {
+    top:10px;
+    left:20px;
+}
+.darkmode__switch__slider i:nth-of-type(6) {
+    top:9px;
+    left:4px;
+}
+
+.darkmode__switch__input:checked + .darkmode__switch__slider:before {
+    -webkit-transform: translateX(21px) translateY(-2px);
+    -ms-transform: translateX(21px) translateY(-2px);
+    transform: translateX(21px) translateY(-2px);
+
+    background-color: transparent;
+    box-shadow: 5px 2px 0 0 #FFFDF2;
+}
+
+.darkmode__switch__input:checked + .darkmode__switch__slider i {
+    width: 2px;
+    height: 2px;
+    -webkit-transform: translateX(4px);
+    -ms-transform: translateX(4px);
+    transform: translateX(4px);
+}
+
+.darkmode__switch__input:checked + .darkmode__switch__slider i:nth-of-type(1),
+.darkmode__switch__input:checked + .darkmode__switch__slider i:nth-of-type(4),
+.darkmode__switch__input:checked + .darkmode__switch__slider i:nth-of-type(6) {
+    background-color: white;
+    width: 3px;
+    height: 3px;
+} 
+
+
+body.light {
+    .darkmode__switch { border-color: rgba(0,0,0,0.75); }
+    .darkmode__switch__slider:before { background-color: #E4C74D; }
+    .darkmode__switch__slider i { background-color: hsla(0,0,90,0.85); }
+}
+
+body.light .navbar.light.hashero {
+    .darkmode__switch { background-color: rgba(0,0,0,0.15); }
+}
+
+body.light .navbar.dark.hashero {
+    .darkmode__switch { border-color: rgba(255,255,255,0.75); }
+    .darkmode__switch__slider:before { background-color: #F5EB42; }
+    .darkmode__switch__slider i { background-color: hsla(0,0,100,0.75); }
+}
+
+@include breakpoint(ipad) {
+    .darkmode__switch {
+        margin-right: 0;
+    }
+}
+
+/* END OF DARK MODE SWITCH */
+
+.notMobile {display: none;}
+

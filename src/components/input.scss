@@ -1,7 +1,8 @@
 @mixin float-label-container {
   display: block;
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-md);
+  font-family: var(--sans-serif);
 }
 
 @mixin float-label {
@@ -34,6 +35,11 @@
       opacity: .5;
       @content;
   }
+}
+
+article form { 
+  max-width: var(--max-width-text);
+  margin: auto;
 }
 
 .has-float-label {
@@ -84,42 +90,6 @@
 
 .input__submit {
   width: 100%;
-  display: block;
-  border: none;
-  text-align: center;
-  box-sizing: border-box;
-  text-decoration: none;
-  padding: .75em 1.5em;
-  cursor: pointer;
-  font-family:
-  SFMono-Regular,
-  Menlo,
-  Monaco,
-  Consolas,
-  "Liberation Mono",
-  "Courier New",
-  monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background: white;
-  color: black;
-  border: 3px solid black;
-  border-radius: .5em;
-  transition: background 250ms ease-in-out,
-              color 250ms ease-in-out,
-              border-color 250ms ease-in-out,
-              transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  &:hover, &:focus {
-    background: black;
-    color: white;
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
 }
 
 @media only screen and ( min-width: 768px ) {

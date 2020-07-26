@@ -70,7 +70,7 @@ module.exports = {
           {
             resolve: "gatsby-remark-embed-video",
             options: {
-              width: 800,
+              width: 720,
               ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
               //height: 400, // Optional: Overrides optional.ratio
               related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
@@ -87,7 +87,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 800,
+              maxWidth: 720,
               showCaptions: true,
               markdownCaptions: false,
             },
@@ -95,7 +95,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.618rem`,
+              wrapperStyle: `margin-bottom: var(--space-md)`,
             },
           },
           {
@@ -127,7 +127,10 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sass',
       options: {
-        data: `@import "${__dirname}/src/styles/variables";`,
+        data: `
+          @import "${__dirname}/src/styles/variables";
+          @import "${__dirname}/src/styles/mixins";
+        `,
       }
     },
     /*{
@@ -150,12 +153,12 @@ module.exports = {
         icon: `content/assets/logo.png`,
       },
     },
-    {
+    /*{
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
-    },
+    },*/
     {
       resolve: "gatsby-plugin-react-svg",
       options: {

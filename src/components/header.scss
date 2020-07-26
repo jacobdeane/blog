@@ -2,24 +2,18 @@ $content_width: 836px;
 
 .header {
 	margin: auto;
-	max-width: $content_width;
-	padding: 3rem calc(1rem + env(safe-area-inset-left));
+	max-width: var(--max-width-text);
+	padding: var(--padding) var(--padding-safe);
+
+    p {
+        margin-bottom: var(--space-md);
+    }
 }
 
 .header__heading {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: var(--monospace);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-weight: normal;
     text-align: center;
-}
-
-@media only screen and ( min-width: 768px ) {
-    .header { padding: 4rem calc(2rem + env(safe-area-inset-left)); }
-}
-
-@media only screen and ( min-width: 1400px ) {
-    .header {
-        max-width: 1236px;
-    }
 }

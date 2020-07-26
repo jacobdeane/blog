@@ -1,14 +1,30 @@
-$content_width: 836px;
-
 .astroimage__wrapper {
-	max-width: $content_width;
+	max-width: var(--max-width-wide);
 	margin: auto;
-	padding: 0 calc(1rem + env(safe-area-inset-left));
 	display: grid;
-	grid-gap: 1.618rem;
+	grid-gap: var(--space-md);
 	grid-template-columns: 1fr;
-	margin-bottom: 3.236rem;
+	padding: var(--padding) var(--padding-safe);
 }
+
+@include breakpoint(phablet) {
+	.astroimage__wrapper {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@include breakpoint(tablet) {
+	.astroimage__wrapper {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+@include breakpoint(laptop) {
+	.astroimage__wrapper {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+}
+
 
 .astroimage {
 	position: relative;
@@ -44,10 +60,14 @@ $content_width: 836px;
 }
 
 .astroimage__link {
-	padding: 1.618rem;
+	padding: var(--padding);
 	display: table;
 	text-decoration: none;
-	color: white;
+	box-sizing: border-box;
+
+	h1 {
+		color: white;
+	}
 }
 
 .astroimage__heading {
@@ -56,37 +76,30 @@ $content_width: 836px;
 	text-align: center;
 	font-weight: 500;
 	font-size: 1.5rem;
-	font-family:
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    "Liberation Mono",
-    "Courier New",
-    monospace;
+	font-family: var(--monospace);
     letter-spacing: 0.1em;
 	text-transform: uppercase;
 	line-height: 1.25;
 }
 
 p.designations {
-    line-height: 1.618rem;
+    line-height: var(--body-line-height);
     display: block;
-    margin-bottom: 1.618rem;
-    margin-top: -1.618rem;
+    margin-bottom: var(--space-md);
+    margin-top: calc(-1 * var(--space-md));
     font-size: .75em;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: var(--monospace);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-	color: #999;
+	color: var(--color-text-subtle);
 }
 
 .details__heading {
-    line-height: 1.618rem;
+    line-height: var(--body-line-height);
     font-size: .75em;
     display: block;
     margin-bottom: 0;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: var(--monospace);
     letter-spacing: 0.1em;
     text-transform: uppercase;
 	font-weight: normal;
@@ -94,14 +107,14 @@ p.designations {
 
 .details {
 	list-style: none;
-	margin-left: 0;
+	padding:0;
 	font-size: .75em;
-	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	font-family: var(--monospace);
 	letter-spacing: 0.025em;
 
 	> li {
 		margin: 0;
-	    color: #999;
+	    color: var(--color-text-subtle);
 
 	    &.total {
 	    	margin-top: 1.5em;
@@ -110,24 +123,38 @@ p.designations {
 }
 
 .column__wrapper {
+	max-width: var(--max-width-text);
+	margin: auto;
 	display: grid;
-	grid-column-gap: 1.618rem;
+	grid-column-gap: var(--space-md);
 	grid-template-columns: 1fr;
+}
+
+@include breakpoint(tablet) {
+	.column__wrapper { grid-template-columns: 1fr 1fr; }
 }
 
 // VirtualSky
 
 .virtualsky__wrapper {
-	margin: 1.618rem 0;
+	margin: var(--padding) auto;
 	position: relative;
 	width: 100%;
+	max-width: var(--max-width-wide);
 	height: 400px;
 }
 
 .virtualsky {
 	width: 100% !important;
+	height: 100% !important;
 	margin: 0;
 	pointer-events: none;
+}
+
+@include breakpoint(laptop) {
+	.virtualsky__wrapper {
+		height: 600px;
+	}
 }
 
 .dark .virtualsky.light {display: none;}
@@ -147,8 +174,8 @@ p.designations {
 .virtualsky__reticle {
 	width: 1.5em;
 	height: 1.5em;
-	border: dashed 3px red;
-	//border-radius: 100%;
+	border: dashed 2px red;
+	border-radius: 100%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -161,32 +188,10 @@ p.designations {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    padding-top: 3rem;
+    padding-top: 4em;
     font-size: .75em;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: var(--monospace);
     letter-spacing: 0.1em;
     text-transform: uppercase;
 	color: red;
-}
-
-
-@media only screen and ( min-width: 480px ) {
-	.astroimage__wrapper { grid-template-columns: 1fr 1fr; }
-	.astroimage__heading { font-size: 1.25em; }
-}
-
-@media only screen and ( min-width: 768px ) {
-	.astroimage__wrapper {
-		padding: 0 calc(2em + env(safe-area-inset-left));
-		grid-template-columns: 1fr 1fr 1fr;
-	}
-	.column__wrapper { grid-template-columns: 1fr 1fr; }
-}
-
-@media only screen and ( min-width: 1400px ) {
-    .astroimage__wrapper {
-        max-width: 1236px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    .astroimage__heading { font-size: 1.5em; }
 }

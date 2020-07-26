@@ -136,7 +136,7 @@ class AstroPostTemplate extends React.Component {
           fluid={post.frontmatter.hero_image.childImageSharp.fluid} 
         />
         </header>
-        <article>
+        <article className="astro">
         <h1>{post.frontmatter.title}</h1>
         {designations}
         <MDXRenderer>{post.body}</MDXRenderer>

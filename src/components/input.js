@@ -9,7 +9,7 @@ class Input extends React.Component {
 
     if (type === 'submit') {
       return(
-        <button type="submit" className="input__submit" aria-label={label} >{label}</button>
+        <button type="submit" className="button input__submit" aria-label={label} >{label}</button>
       )
     }
 

@@ -7,7 +7,11 @@ module.exports = ({ markdownAST }) => {
       return child.type === "inlineCode" || child.type === "text" && child.value === "\n";
     });
 
-    if (!hasOnlyCodeNodes) {
+    const hasOnlyImageNodes = node.children.every(child => {
+      return child.type === "image" || child.type === "text" && child.value === "\n";
+    });
+
+    if (!hasOnlyCodeNodes && !hasOnlyImageNodes) {
       return;
     }
 

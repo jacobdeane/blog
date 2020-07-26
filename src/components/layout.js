@@ -145,11 +145,11 @@ class Layout extends React.Component {
                     title='home'
                   />
                 </Link>
-                <p>Submarine designer by day, astrophotographer by night.</p>
-                <Link className="footer__link" to="/contact/"><button className="footer__button">Contact Me</button></Link>
+                <p>Design engineer by day,<br/>astrophotographer by night.</p>
+                <Link className="footer__link" to="/contact/"><button className="button footer__button">Contact Me</button></Link>
               </div>
               
-              <div>
+              <div className="notMobile">
                 <h2 className="category__list__title">Read more about:</h2>
                 <ul className="category__list">
                   <ListLink to="/astronomy">Astronomy</ListLink>
