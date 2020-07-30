@@ -24,6 +24,8 @@ Currently I have a ‘Full HD’ 1080p television which supports 8-bit color –
 
 Its not really possible to show the actual difference between 8-bit and 10-bit or 12-bit on a website, which you are most likely viewing on a device with a screen that only supports 8-bit (sorry readers from the future), but I can simulate some of the differences.
 
+<comparison image1="../assets/martian-sdr.jpg" label1="SDR" image2="../assets/martian-hdr.jpg" label2="HDR TEST" />
+
 ![SDR](../assets/martian-sdr.jpg)
 
 ![HDR](../assets/martian-hdr.jpg)
