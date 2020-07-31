@@ -1,10 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Hero from "../components/hero"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+import Comparison from "../components/comparison"
+
+const shortcodes = { Comparison }
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -45,7 +50,9 @@ class BlogPostTemplate extends React.Component {
         <article>
           {articleTitle}
           {articleDate}
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXProvider components={shortcodes}>
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </MDXProvider>
         </article>
       </Layout>
     )

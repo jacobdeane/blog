@@ -28,7 +28,7 @@ article > img {
 /* GALLERY WORKAROUNDS - NETLIFY CMS IS SOMEWHAT LIMITED CURRENTLY */
 
 .gallery {
-    p { 
+    span { 
         display: inline-block;
         width: 100%;
         height: 0;
@@ -37,7 +37,7 @@ article > img {
         overflow: hidden;
     }
 
-    p > span {
+    span > span {
         display: block;
         position: absolute !important;
         top: 0;
@@ -57,12 +57,12 @@ article > img {
 }
 
 .gallery__two, .gallery__three, .gallery__four {
-    p { 
+    span { 
         width: calc( 50% - .809rem);
         padding-top: calc( 50% - .809rem);
         margin-left: 1.618rem;
     }
-    p:nth-child(2n-1) { margin-left: 0; }
+    span:nth-child(2n-1) { margin-left: 0; }
 }
 
 @include breakpoint(tablet) {

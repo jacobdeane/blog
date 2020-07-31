@@ -41,34 +41,36 @@ CMS.registerEditorComponent({
   // Internal id of the component
   id: "comparison",
   // Visible label
-  label: "Image Comparison",
+  label: "Comparison",
   // Fields the user need to fill out when adding an instance of the component
   fields: [
-  	{name: 'image1', label: 'Left Image', widget: 'image'},
-  	{name: 'label1', label: 'Left Label', widget: 'string'},
-  	{name: 'image2', label: 'Right Image', widget: 'image'},
-  	{name: 'label2', label: 'Right Label', widget: 'string'}
+  	{name: 'id', label: 'Unique ID', widget: 'string'},
+  	{name: 'imageLeft', label: 'Left Image', widget: 'image'},
+  	{name: 'captionLeft', label: 'Left Caption', widget: 'string'},
+  	{name: 'imageRight', label: 'Right Image', widget: 'image'},
+  	{name: 'captionRight', label: 'Right Caption', widget: 'string'},
   ],
   // Pattern to identify a block as being an instance of this component
-  pattern: /<comparison image1="(\S+)" label1="(\S+)" image2="(\S+)" label2="(\S+)" \/>/,
+  pattern: /import image_(\S+)_left from '(\S+)';\nimport image_(\S+)_right from '(\S+)';\n\n<Comparison imageLeft={image_(\S+)_left} captionLeft='(\S+)' imageRight={image_(\S+)right} captionRight='(\S+)' ><\/Comparison>/,
   // Function to extract data elements from the regexp match
   fromBlock: function(match) {
     return {
-      image1: match[1],
-      label1: match[2],
-      image2: match[3],
-      label2: match[4],
+      id: match[1],
+      imageLeft: match[1],
+      captionLeft: match[3],
+      imageRight: match[4],
+      captionRight: match[5]
     };
   },
   // Function to create a text block from an instance of this component
   toBlock: function(obj) {
-    return '<comparison image1="' + obj.image1 + '" label1="' + obj.label1 + '" image2="' + obj.image2 + '" label2="' + obj.label2 + '" />';
+  	return `import image_` + obj.id +`_left from '` + obj.imageLeft + `';\nimport image_` + obj.id +`_right from '` + obj.imageRight + `';\n\n<Comparison imageLeft={image_` + obj.id +`_left} captionLeft='` + obj.captionLeft + `' imageRight={image_` + obj.id +`_right} captionRight='` + obj.captionRight + `' ></Comparison>`;
   },
   // Preview output for this component. Can either be a string or a React component
   // (component gives better render performance)
   toPreview: function(obj) {
     return (
-      'Image Comparison - Preview is WIP.'
+      '<img src="' + obj.imageLeft + '" />'
     );
   }
 });
