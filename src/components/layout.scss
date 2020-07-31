@@ -28,111 +28,47 @@ article > img {
 /* GALLERY WORKAROUNDS - NETLIFY CMS IS SOMEWHAT LIMITED CURRENTLY */
 
 .gallery {
-    span { 
-        display: inline-block;
+    max-width: var(--max-width-wide);
+    margin: 0 auto var(--space-md);
+    display: grid;
+    grid-gap: var(--space-md);
+    grid-template-columns: 1fr;
+
+    & > span {
+        position: relative;
         width: 100%;
         height: 0;
-        padding-top: 100%;
-        position: relative;
-        overflow: hidden;
-    }
+        margin: 0;
+        padding: 100% 0 0 0;
 
-    span > span {
-        display: block;
-        position: absolute !important;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
+        & > span, & > img {
+            padding: 0 !important;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            object-fit: cover;
+        }
     }
-
-    .gatsby-resp-image-background-image { 
-        padding-bottom: 100% !important;
-        background-position: center;
-    }
-
-    img { object-fit: cover; }
 }
 
 .gallery__two, .gallery__three, .gallery__four {
-    span { 
-        width: calc( 50% - .809rem);
-        padding-top: calc( 50% - .809rem);
-        margin-left: 1.618rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+@include breakpoint(tablet) {
+    .gallery__three, .gallery__four {
+        grid-template-columns: 1fr 1fr 1fr;
     }
-    span:nth-child(2n-1) { margin-left: 0; }
+}
+
+@include breakpoint(laptop) {
+    .gallery__four {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 }
 
 @include breakpoint(tablet) {
     .notMobile {display: inline;}
 }
-
-
-/*@media only screen and ( min-width: $ipad_portrait ) {
-
-    .menu__open { right: 1rem; }
-    
-    .notMobile {display: inline;}
-    
-    .footer {font-size: 1em;}
-
-    .footer__logo { height: 2rem; }
-
-    .footer__columns {
-        grid-template-columns: 1fr 1fr;
-        font-size: .75em;
-    }
-
-    .footer__columns p { width: 15rem; }
-    .footer__button { width: 14rem; }
-
-    .category__list__title, .category__list .menu__item { text-align: right; }
-
-    .social__list { margin-top: -3.236rem; }
-
-    .gallery__three {
-        p { 
-            width: calc( 33% - 1.078666666666667rem);
-            padding-top: calc( 33% - 1.078666666666667rem);
-        }
-        p:nth-child(2n-1) { margin-left: 1.618rem; }
-        p:nth-child(3n-2) { margin-left: 0; }
-    }
-
-    .gallery__four {
-        p {
-            width: calc( 25% - 1.2135rem);
-            padding-top: calc( 25% - 1.2135rem);
-            margin-left: 1.618rem;
-        }
-        p:nth-child(2n-1) { margin-left: 1.618rem; }
-        p:nth-child(4n-3) { margin-left: 0; }
-    }
-}
-
-@media only screen and ( min-width: $content_width ) {
-    //html { font-size: 120%; }
-	article { 
-        padding-bottom: 3.236rem;
-    }
-}
-
-@media only screen and ( min-width: $desktop_wide ) {
-    svg#logo { 
-        height: 1em; 
-    }
-    .navbar, .footer__text {
-        max-width: 1236px;
-    }
-    article.page {
-        max-width: 1236px;
-        padding-top: 3.236rem;
-        padding-bottom: 4.854rem;
-        h1, h2, h3, p, ul, ol, img, form {
-            max-width: $content_width;
-        }
-    }
-}
-*/
