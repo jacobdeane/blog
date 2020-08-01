@@ -68,6 +68,10 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],
+        plugins: [
+          `gatsby-remark-images`, 
+          `gatsby-remark-images-medium-zoom`
+        ],
         gatsbyRemarkPlugins: [
           {
             resolve: require.resolve(`./plugins/gatsby-remark-unwrap-inlinecode`),
@@ -99,6 +103,9 @@ module.exports = {
             },
           },
           {
+            resolve: `gatsby-remark-images-medium-zoom`,
+          },
+          {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
               wrapperStyle: `margin-bottom: var(--space-md)`,
@@ -127,7 +134,6 @@ module.exports = {
             }
           }
         ],
-        plugins: [`gatsby-remark-images`],
       },
     },
     {

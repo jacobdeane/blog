@@ -69,6 +69,12 @@ article > img {
     }
 }
 
+.dark .medium-zoom-overlay {background-color: black !important;}
+
+img.medium-zoom-image--opened {
+    width: auto !important;
+}
+
 @include breakpoint(tablet) {
     .notMobile {display: inline;}
 }
