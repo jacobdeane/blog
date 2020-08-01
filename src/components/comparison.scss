@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Alex Duner and Northwestern University Knight Lab
  */
 div.juxtapose {
-	width: 100%;
+	width: 100% !important;
 	max-width: var(--max-width-wide);
 	margin: 0 auto var(--space-md);
 	font-family: var(--monospace);

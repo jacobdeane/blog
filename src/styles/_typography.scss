@@ -219,6 +219,15 @@ article {
 	    font-weight: 700;
 	}
 
+	sup, sub {
+		vertical-align: baseline;
+		position: relative;
+		font-size: .75em;
+		top: -0.4em;
+	}
+
+	sub { top: -0.4em; }
+
 	.message {
 	    padding: 0.809rem 1.618rem;
 	    margin-bottom: 1.618rem;
@@ -251,14 +260,25 @@ article {
 	    }
 	}
 
+	hr { 
+		display: block;
+		width: 100%;
+		max-width: var(--max-width-text);
+		height: 1px;
+		background: var(--color-text-subtle);
+		border: 0;
+		margin: var(--space-md) auto;
+	}
+
 	.footnote-ref, .footnote-backref {
 	    text-decoration: none;
 	}
 
 	.footnotes {
+		font-family: var(--sans-serif);
 	    font-size: .875rem;
-	    color: rgba(0,0,0,0.6);
-	    font-weight: 200;
+	    color: var(--color-text-subtle);
+	    font-weight: 300;
 	}
 
 }
@@ -323,5 +343,9 @@ article {
 		    color: var(--color-text);
 		}
 	}
+
+	hr { background: var(--color-dark-text-subtle); }
+
+	.footnotes { color: var(--color-dark-text-subtle); }
 
 }
