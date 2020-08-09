@@ -57,8 +57,6 @@ typings/
 # gatsby files
 .cache/
 public
-!public/admin/config.yml
-
 
 # Mac files
 .DS_Store

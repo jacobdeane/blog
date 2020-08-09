@@ -1,13 +1,14 @@
 backend:
-#  name: github
-#  repo: jacobdeane/blog
-  name: proxy
-  proxy_url: http://localhost:8081/api/v1
+  name: github
+  repo: jacobdeane/blog
 
-media_folder: content/assets
-public_folder: ../assets
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: jacobdeane-com
+    api_key: 378696241743183
 
-display_url: http://localhost:8000/
+display_url: http://jacobdeane.netlify.com/
 
 collections:
   - name: blog
