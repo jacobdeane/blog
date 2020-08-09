@@ -13,7 +13,7 @@ media_library:
     cloud_name: jacobdeane-com
     api_key: 378696241743183
 
-display_url: http://localhost:8000/
+display_url: http://jacobdeane.netlify.com/
 
 collections:
   - name: blog
