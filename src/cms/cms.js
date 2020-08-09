@@ -5,6 +5,11 @@
  */
 import CMS from "netlify-cms-app"
 
+// Cloudinary
+
+import cloudinary from 'netlify-cms-media-library-cloudinary';
+CMS.registerMediaLibrary(cloudinary);
+
 // Youtube
 
 CMS.registerEditorComponent({
