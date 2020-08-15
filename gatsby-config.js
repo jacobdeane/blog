@@ -69,8 +69,7 @@ module.exports = {
       options: {
         extensions: [".mdx", ".md"],
         plugins: [
-          `gatsby-remark-images`, 
-          `gatsby-remark-images-medium-zoom`
+          `gatsby-remark-images`
         ],
         gatsbyRemarkPlugins: [
           {
@@ -96,14 +95,11 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 720,
+              maxWidth: 1200,
               showCaptions: true,
               markdownCaptions: false,
-              linkImagesToOriginal: false
+              quality: 70,
             },
-          },
-          {
-            resolve: `gatsby-remark-images-medium-zoom`,
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,

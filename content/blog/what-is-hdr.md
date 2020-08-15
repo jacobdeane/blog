@@ -24,26 +24,38 @@ Currently I have a ‘Full HD’ 1080p television which supports 8-bit color –
 
 Its not really possible to show the actual difference between 8-bit and 10-bit or 12-bit on a website, which you are most likely viewing on a device with a screen that only supports 8-bit (sorry readers from the future), but I can simulate some of the differences.
 
-import image_martian_left from '../assets/martian-sdr.jpg';
-import image_martian_right from '../assets/martian-hdr.jpg';
+<div className="juxtapose">
 
-<Comparison imageLeft={image_martian_left} captionLeft='SDR' imageRight={image_martian_right} captionRight='HDR' ></Comparison>
+![SDR](../assets/martian-sdr.jpg)
+![HDR](../assets/martian-hdr.jpg)
+
+<Comparison></Comparison>
+
+</div>
 
 This first example is a still from *The Martian*. On the left is the ‘SDR’ version and on the right the ‘HDR’ version – note that the HDR version isn’t mastered to be any brighter. But if you look at the shadow detail in the mountains you can see a lot more detail in the HDR version. Colours are generally richer in HDR than SDR.
 
-import image_planetearth_left from '../assets/planet-earth-sdr.jpg';
-import image_planetearth_right from '../assets/planet-earth-hdr.jpg';
+<div className="juxtapose">
 
-<Comparison imageLeft={image_planetearth_left} captionLeft='SDR' imageRight={image_planetearth_right} captionRight='HDR' ></Comparison>
+![SDR](../assets/planet-earth-sdr.jpg)
+![HDR](../assets/planet-earth-hdr.jpg)
+
+<Comparison></Comparison>
+
+</div>
 
 In the above example from *BBC Planet Earth*, you can see posterisation occuring in the gradient of the sky of the SDR image – this can occur because there isn’t enough colour data to get a smooth gradient – this is much improved in HDR.
 
 As well as having much better colour, HDR can support a much higher peak brightness – HDR10 supports up to 4,000 nits, and Dolby Vision to a sunburn inducing 10,000 nits but in practice films are rarely mastered with such extreme highlights – for comparison my older generation LCD TV outputs maybe 120 nits once calibrated and the brightest HDR TVs available today are hitting around 1800 nits.
 
-import image_everest_left from '../assets/everest-sdr.jpg';
-import image_everest_right from '../assets/everest-hdr.jpg';
+<div className="juxtapose">
 
-<Comparison imageLeft={image_everest_left} captionLeft='SDR' imageRight={image_everest_right} captionRight='HDR' ></Comparison>
+![SDR](../assets/everest-sdr.jpg)
+![HDR](../assets/everest-hdr.jpg)
+
+<Comparison></Comparison>
+
+</div>
 
 In the above example from *Everest*, you can see how much highlight details has been lost in the SDR version – the HDR image isn’t noticeably brighter, but it has a lot more headroom for highlight details. You can also see that highlights such as on the top of the ladder can be much brighter than in the SDR image but the image overall has a similar average brightness.
 

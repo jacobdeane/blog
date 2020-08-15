@@ -5,11 +5,6 @@
  */
 import CMS from "netlify-cms-app"
 
-// Cloudinary
-
-import cloudinary from 'netlify-cms-media-library-cloudinary';
-CMS.registerMediaLibrary(cloudinary);
-
 // Youtube
 
 CMS.registerEditorComponent({
@@ -49,27 +44,25 @@ CMS.registerEditorComponent({
   label: "Comparison",
   // Fields the user need to fill out when adding an instance of the component
   fields: [
-  	{name: 'id', label: 'Unique ID', widget: 'string'},
   	{name: 'imageLeft', label: 'Left Image', widget: 'image'},
   	{name: 'captionLeft', label: 'Left Caption', widget: 'string'},
   	{name: 'imageRight', label: 'Right Image', widget: 'image'},
   	{name: 'captionRight', label: 'Right Caption', widget: 'string'},
   ],
   // Pattern to identify a block as being an instance of this component
-  pattern: /import image_(\S+)_left from '(\S+)';\nimport image_(\S+)_right from '(\S+)';\n\n<Comparison imageLeft={image_(\S+)_left} captionLeft='(\S+)' imageRight={image_(\S+)right} captionRight='(\S+)' ><\/Comparison>/,
+  pattern: /<div className="juxtapose">\n\n!\[(\S+)\]\((\S+)\)\n!\[(\S+)\]\((\S+)\)\n\n<Comparison><\/Comparison>\n\n<\/div>/,
   // Function to extract data elements from the regexp match
   fromBlock: function(match) {
     return {
-      id: match[1],
-      imageLeft: match[1],
-      captionLeft: match[3],
-      imageRight: match[4],
-      captionRight: match[5]
+      captionLeft: match[1],
+      imageLeft: match[2],
+      captionRight: match[3],
+      imageRight: match[4]
     };
   },
   // Function to create a text block from an instance of this component
   toBlock: function(obj) {
-  	return `import image_` + obj.id +`_left from '` + obj.imageLeft + `';\nimport image_` + obj.id +`_right from '` + obj.imageRight + `';\n\n<Comparison imageLeft={image_` + obj.id +`_left} captionLeft='` + obj.captionLeft + `' imageRight={image_` + obj.id +`_right} captionRight='` + obj.captionRight + `' ></Comparison>`;
+    return `<div className="juxtapose">\n\n![` + obj.captionLeft + `](` + obj.imageLeft + `)\n![` + obj.captionRight + `](` + obj.imageRight + `)\n\n<Comparison></Comparison>\n\n</div>`
   },
   // Preview output for this component. Can either be a string or a React component
   // (component gives better render performance)
