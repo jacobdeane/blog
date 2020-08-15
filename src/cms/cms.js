@@ -50,7 +50,7 @@ CMS.registerEditorComponent({
   	{name: 'captionRight', label: 'Right Caption', widget: 'string'},
   ],
   // Pattern to identify a block as being an instance of this component
-  pattern: /<div className="juxtapose">\n\n!\[(\S+)\]\((\S+)\)\n!\[(\S+)\]\((\S+)\)\n\n<Comparison><\/Comparison>\n\n<\/div>/,
+  pattern: /<div className="juxtapose">\n\n!\[([A-Za-z0-9\-\s]+)\]\((\S+)\)\n!\[([A-Za-z0-9\-\s]+)\]\((\S+)\)\n\n<Comparison><\/Comparison>\n\n<\/div>/,
   // Function to extract data elements from the regexp match
   fromBlock: function(match) {
     return {
