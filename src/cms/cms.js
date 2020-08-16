@@ -50,19 +50,19 @@ CMS.registerEditorComponent({
   	{name: 'captionRight', label: 'Right Caption', widget: 'string'},
   ],
   // Pattern to identify a block as being an instance of this component
-  pattern: /<div className="juxtapose">\n\n!\[([A-Za-z0-9\-\s]+)\]\((\S+)\)\n!\[([A-Za-z0-9\-\s]+)\]\((\S+)\)\n\n<Comparison><\/Comparison>\n\n<\/div>/,
+  pattern: /<div className="juxtapose">\n\t<img src="(\S+)" alt="([A-Za-z0-9\-\s]+)" width="1200px"\/>\n\t<img src="(\S+)" alt="([A-Za-z0-9\-\s]+)" width="1200px"\/>\n<\/div>\n\n<Comparison><\/Comparison>/,
   // Function to extract data elements from the regexp match
   fromBlock: function(match) {
     return {
-      captionLeft: match[1],
-      imageLeft: match[2],
-      captionRight: match[3],
-      imageRight: match[4]
+      imageLeft: match[1],
+      captionLeft: match[2],
+      imageRight: match[3],
+      captionRight: match[4]
     };
   },
   // Function to create a text block from an instance of this component
   toBlock: function(obj) {
-    return `<div className="juxtapose">\n\n![` + obj.captionLeft + `](` + obj.imageLeft + `)\n![` + obj.captionRight + `](` + obj.imageRight + `)\n\n<Comparison></Comparison>\n\n</div>`
+    return `<div className="juxtapose">\n\t<img src="` + obj.imageLeft + `" alt="` + obj.captionLeft + `" width="1200px"/>\n\t<img src="` + obj.imageRight + `" alt="` + obj.captionRight + `" width="1200px"/>\n</div>\n\n<Comparison></Comparison>`
   },
   // Preview output for this component. Can either be a string or a React component
   // (component gives better render performance)

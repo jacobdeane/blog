@@ -126,13 +126,11 @@ The Orion Nebula is one of my favourite targets, as it is very bright, and has a
 I can actually show you the difference between imaging the Orion Nebula with a 200mm telephoto lens and a 360mm telescope:
 
 <div className="juxtapose">
-
-![Sony FE 70-200mm F4 G](../assets/orion-nebula_v2.jpg)
-![William Optics ZS61](../assets/orion-nebula_v3.jpg)
+	<img src="../assets/orion-nebula_v2.jpg" alt="Sony FE 70-200mm F4 G" width="1200px"/>
+	<img src="../assets/orion-nebula_v3.jpg" alt="William Optics ZS61" width="1200px"/>
+</div>
 
 <Comparison></Comparison>
-
-</div>
 
 The clarity and detail is significantly better on the right-hand image – to be fair I didn’t get the focus right on the left-hand image, so that lens can do better, but it is not as well suited to the task as the telescope with its incredible fine focus!
 
@@ -182,13 +180,11 @@ DeepSkyStacker is pretty user friendly, you select each of your different types 
 This can then be processed in a photo editing program such as Photoshop to pull out the best of the image.
 
 <div className="juxtapose">
-
-![Unprocessed stack](../assets/rosette-stacked.jpg)
-![Final Image](../assets/rosette-final.jpg)
+	<img src="../assets/rosette-stacked.jpg" alt="Unprocessed stack" width="1200px"/>
+	<img src="../assets/rosette-final.jpg" alt="Final Image" width="1200px"/>
+</div>
 
 <Comparison></Comparison>
-
-</div>
 
 In the above image of the Rosette Nebula, you can see how much data can be pulled out of the stacked image – this takes a lot of careful manipulation using Photoshop, to gently stretch the image to boost the detail of the Nebula, without blowing out the much brighter stars.
 

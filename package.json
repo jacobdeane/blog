@@ -8,6 +8,7 @@
     "url": "https://github.com/jacobdeane/blog/issues"
   },
   "dependencies": {
+    "@bonobolabs/gatsby-remark-images-custom-widths": "0.0.6",
     "@emotion/core": "^10.0.28",
     "@mdx-js/mdx": "^1.6.15",
     "@mdx-js/react": "^1.6.15",
@@ -36,7 +37,6 @@
     "gatsby-remark-embed-video": "^3.0.10",
     "gatsby-remark-footnotes": "0.0.7",
     "gatsby-remark-images": "^3.3.22",
-    "gatsby-remark-images-medium-zoom": "^1.7.0",
     "gatsby-remark-responsive-iframe": "^2.4.12",
     "gatsby-remark-smartypants": "^2.3.10",
     "gatsby-remark-vscode": "^1.0.4",

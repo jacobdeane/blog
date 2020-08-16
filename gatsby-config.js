@@ -69,7 +69,7 @@ module.exports = {
       options: {
         extensions: [".mdx", ".md"],
         plugins: [
-          `gatsby-remark-images`
+          `@bonobolabs/gatsby-remark-images-custom-widths`
         ],
         gatsbyRemarkPlugins: [
           {
@@ -93,12 +93,11 @@ module.exports = {
             }
           },
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `@bonobolabs/gatsby-remark-images-custom-widths`,
             options: {
-              maxWidth: 1200,
+              maxWidth: 720,
               showCaptions: true,
               markdownCaptions: false,
-              quality: 70,
             },
           },
           {

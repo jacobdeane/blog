@@ -25,6 +25,18 @@ article > img {
     padding-bottom: 56.25%;
 }
 
+/* IMAGES */
+
+.gatsby-resp-image-image {
+    width: 100%; 
+    height: 100%;
+    margin: 0;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 /* GALLERY WORKAROUNDS - NETLIFY CMS IS SOMEWHAT LIMITED CURRENTLY */
 
 .gallery {
@@ -70,12 +82,6 @@ article > img {
     .gallery__four {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-}
-
-.dark .medium-zoom-overlay {background-color: black !important;}
-
-img.medium-zoom-image--opened {
-    width: auto !important;
 }
 
 @include breakpoint(tablet) {
