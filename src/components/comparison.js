@@ -8,7 +8,7 @@ class Comparison extends React.Component {
 
     return (
         <Helmet>
-          <script src="/juxtapose.min.js"></script>
+          <script src="/js/juxtapose/juxtapose.min.js"></script>
         </Helmet>
     )
   }

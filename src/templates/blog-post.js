@@ -8,8 +8,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import Comparison from "../components/comparison"
+import Gallery from "../components/gallery"
 
-const shortcodes = { Comparison }
+const shortcodes = { Comparison, Gallery }
 
 class BlogPostTemplate extends React.Component {
   render() {

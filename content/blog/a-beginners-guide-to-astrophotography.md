@@ -33,7 +33,7 @@ These images were taken with a Panasonic GH1, a relatively old digital camera, n
 
 A sky tracking mount is probably the most important piece of equipment, and vital for photographing Deep-Sky-Objects (DSOs) such as galaxies and nebula.
 
-The main reason you need a mount that tracks the movement of the sky rather than just a tripod is to avoid star trails.
+The main reason you need a mount that tracks the movement of the sky rather than just a tripod is to avoid star trails. 
 
 ![Star Trails around Polaris - Approx 1.5 hours exposure time.](../assets/858050_10100126092783712_2059373455_o.jpg "Star Trails around Polaris - Approx 1.5 hours exposure time.")
 
@@ -104,6 +104,8 @@ The William Optics ZS61 uses FPL53 glass made by Ohara in Japan who also make th
 ![](../assets/DSC05812.jpg)
 
 </div>
+
+<Gallery></Gallery>
 
 I could probably write several pages on how good this telescope is, but I may save that for another post. Suffice to say it has great optics and super build quality. It’s a very nice wide field scope. If you do want to know more, have a look at AstroBackyard’s review:
 
