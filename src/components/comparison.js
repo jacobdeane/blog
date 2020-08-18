@@ -1,15 +1,16 @@
-import React from 'react'
-import {Helmet} from 'react-helmet'
+import React, { Component } from "react"
+import { Helmet } from "react-helmet"
 
 import "./comparison.scss"
 
-class Comparison extends React.Component {
-  render() {
-
+class Comparison extends Component {
+  render(props) {
     return (
+      <React.Fragment>
         <Helmet>
-          <script src="/js/juxtapose/juxtapose.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/gh/jacobdeane/blog/static/js/juxtapose/juxtapose.min.js" />
         </Helmet>
+      </React.Fragment>
     )
   }
 }
