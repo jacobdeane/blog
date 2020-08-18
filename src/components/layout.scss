@@ -89,3 +89,5 @@ article > img {
 @include breakpoint(tablet) {
     .notMobile {display: inline;}
 }
+
+.pswp {display: none;}
