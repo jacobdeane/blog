@@ -11,7 +11,7 @@ This weekend I took part in HDTVtest’s annual TV Shootout, where 5 of the best
 
 Big shout out and thank you to Vincent Teoh at [HDTVtest ](http://www.hdtvtest.co.uk/)and [Crampton & Moore ](http://www.cramptonandmoore.co.uk/leeds)who hosted this awesome event!
 
-This is a follow up to my original post on the subject, which you can read here:
+This is a follow up to my original post on the subject, which you can read here: [/audio-visual/2017/4k-hdr-tv-shootout-part-i/](/audio-visual/2017/4k-hdr-tv-shootout-part-i/)
 
 The TVs being showcased were as follows:
 
