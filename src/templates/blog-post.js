@@ -6,6 +6,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Hero from "../components/hero"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Comment from "../components/comment"
 
 import Comparison from "../components/comparison"
 import Gallery from "../components/gallery"
@@ -55,6 +56,7 @@ class BlogPostTemplate extends React.Component {
             <MDXRenderer>{post.body}</MDXRenderer>
           </MDXProvider>
         </article>
+        <Comment />
       </Layout>
     )
   }
