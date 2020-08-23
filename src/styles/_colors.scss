@@ -10,11 +10,17 @@
     --color-dark-text-heading: white;
     --color-dark-text-subtle: hsl(0,0%,54%);
 
-    --color-light-grey: hsl(0,0%,90%);
-    --color-dark-grey: hsl(0,0%,10%);
+    --color-light-grey: #F6F8FA;
+    --color-dark-grey: #181818;
 
     --color-linkedin: #0077B5;
     --color-instagram: #E4405F;
     --color-pinterest: #BD081C;
     --color-vimeo: #1AB7EA;
+
+    --color-message-info: #45ABCD;
+    --color-message-error: #D73814;
+    --color-message-warning: #FEAF20;
+    --color-message-success: #80D651;
+
 }

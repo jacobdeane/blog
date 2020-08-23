@@ -1,6 +1,6 @@
 :root {
 	/* font stacks */
-	--serif: "Iowan Old Style", "Apple Garamond", Baskerville, "Times New Roman", "Droid Serif", Times, "Source Serif Pro", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--serif: "Iowan Old Style", "Apple Garamond", Baskerville, Georgia, Cambria, "Times New Roman", "Droid Serif", Times, "Source Serif Pro", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	--sans-serif: -apple-system, BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica, Ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
 	--monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
@@ -118,7 +118,7 @@ article {
 
 	padding: var(--padding) var(--padding-safe);
 
-	h1, h2, h3, h4, h5, h6, ul, ol, p, pre, blockquote, figure, figcaption {
+	h1, h2, h3, h4, h5, h6, ul, ol, p, pre, blockquote, figure, figcaption, .message {
 		box-sizing: border-box;
 		max-width: var(--max-width-text);
 		margin-left: auto;
@@ -232,7 +232,7 @@ article {
 	    padding: 0.809rem 1.618rem;
 	    margin-bottom: 1.618rem;
 	    box-sizing: border-box;
-	    background-color: #f0f0f0;
+	    background-color: var(--color-light-grey);
 	    border-left: 6px solid #666;
 
 	    .title {
@@ -243,20 +243,20 @@ article {
 	    p { margin: 0; }
 
 	    &.info {
-	        border-color: #45ABCD;
-	        .title { color: #45ABCD; }
+	        border-color: var(--color-message-info);
+	        .title { color: var(--color-message-info); }
 	    }
 	    &.error {
-	        border-color: #D73814;
-	        .title { color: #D73814; }
+	        border-color: var(--color-message-error);
+	        .title { color: var(--color-message-error); }
 	    }
 	    &.warning {
-	        border-color: #FEAF20;
-	        .title { color: #FEAF20; }
+	        border-color: var(--color-message-warning);
+	        .title { color: var(--color-message-warning); }
 	    }
 	    &.success {
-	        border-color: #80D651;
-	        .title { color: #80D651; }
+	        border-color: var(--color-message-success);
+	        .title { color: var(--color-message-success); }
 	    }
 	}
 
@@ -342,6 +342,10 @@ article {
 		    background: var(--color-dark-text);
 		    color: var(--color-text);
 		}
+	}
+
+	.message {
+		background-color: var(--color-dark-grey);
 	}
 
 	hr { background: var(--color-dark-text-subtle); }
