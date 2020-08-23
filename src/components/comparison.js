@@ -1,18 +1,17 @@
-import React, { Component } from "react"
-import { Helmet } from "react-helmet"
+import {Component} from "react"
 
-import "./comparison.scss"
+import './comparison.scss'
 
-class Comparison extends Component {
-  render(props) {
-    return (
-      <React.Fragment>
-        <Helmet>
-          <script src="https://cdn.jsdelivr.net/gh/jacobdeane/blog/static/js/juxtapose/juxtapose.min.js" />
-        </Helmet>
-      </React.Fragment>
-    )
+export default class Comparison extends Component {
+
+  componentDidMount () {
+      let script = document.createElement("script");
+      let anchor = document.getElementById("page__footer");
+      script.setAttribute("src", "/js/juxtapose/juxtapose.min.js");
+      anchor.appendChild(script);
+  }
+
+  render() {
+  	return null
   }
 }
-
-export default Comparison
