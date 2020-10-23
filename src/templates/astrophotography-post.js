@@ -9,12 +9,15 @@ import {parse_coordinates} from "../utils/constellation"
 import dateRange from "../utils/dateRange"
 import sformat from "../utils/functions"
 
+import ProductCard from "../components/products/product"
+
 import "../pages/astrophotography.scss"
 
 
 class AstroPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
+    const prices = this.props.data.prices
     const siteTitle = this.props.data.site.siteMetadata.title
 
     const designations = post.frontmatter.designations ? <p className="designations">(Also known as: {post.frontmatter.designations.join(', ').replace(/,(?=[^,]*$)/, ' &')})</p> : null
@@ -52,6 +55,7 @@ class AstroPostTemplate extends React.Component {
       url.searchParams.set("ra", 15 * coords[0])
       url.searchParams.set("dec", coords[1])
       url.searchParams.set("constellations", "true")
+      url.searchParams.set("constellationlabels", "true")
       url.searchParams.set("scalestars", "1.5")
       url.searchParams.set("fov", "90")
       url.searchParams.set("mouse", "false")
@@ -124,6 +128,25 @@ class AstroPostTemplate extends React.Component {
     })
     const totalExposure = <li className='total'>Total Integration: {sformat(allExposures.reduce((a,b) => a + b))}</li>
 
+    //Shop
+    const products = {}
+    for (const { node: price } of prices.edges) {
+      const product = price.product
+      if (!products[product.id]) {
+        products[product.id] = product
+        products[product.id].prices = []
+      }
+      products[product.id].prices.push(price)
+    }
+    
+    const shop = (
+      <div className="shop">
+        {Object.keys(products).map(key => (
+          <ProductCard key={products[key].id} product={products[key]} img={post.frontmatter.hero_image.childImageSharp.artwork} />
+        ))}
+      </div>
+    )
+    
     return (
       <Layout location={this.props.location} title={siteTitle} theme="dark">
         <SEO
@@ -133,7 +156,7 @@ class AstroPostTemplate extends React.Component {
         <header className={`hero dark fixed`} >
         <Img
           className='hero__img fixed'
-          fluid={post.frontmatter.hero_image.childImageSharp.fluid} 
+          fluid={post.frontmatter.hero_image.childImageSharp.hero} 
         />
         </header>
         <article className="astro">
@@ -161,6 +184,7 @@ class AstroPostTemplate extends React.Component {
           </div>
         </div>
         {virtualsky}
+        {shop}
         </article>
       </Layout>
     )
@@ -170,7 +194,7 @@ class AstroPostTemplate extends React.Component {
 export default AstroPostTemplate
 
 export const astroQuery = graphql`
-  query AstroPostBySlug($slug: String!) {
+  query AstroPostBySlug($slug: String!, $name: String!) {
     site {
       siteMetadata {
         title
@@ -184,7 +208,10 @@ export const astroQuery = graphql`
         title
         hero_image {
           childImageSharp{
-            fluid(maxWidth: 1920, quality:75){
+            hero:fluid(maxWidth: 1920, quality:75){
+              ...GatsbyImageSharpFluid
+            }
+            artwork:fluid(maxWidth: 480, quality:75){
               ...GatsbyImageSharpFluid
             }
           }
@@ -205,6 +232,22 @@ export const astroQuery = graphql`
           filter
           multiple
           sub
+        }
+      }
+    }
+    prices: allStripePrice(filter: {active: {eq: true}, product: {name: {glob: $name}}}, sort: {fields: [unit_amount, nickname]}) {
+      edges {
+        node {
+          id
+          active
+          currency
+          unit_amount
+          product {
+            id
+            name
+            description
+          }
+          nickname
         }
       }
     }

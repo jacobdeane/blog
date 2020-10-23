@@ -59,6 +59,7 @@ exports.createPages = ({ graphql, actions }) => {
             component: astroPost,
             context: {
               slug: post.node.fields.slug,
+              name: `${post.node.frontmatter.title}*`,
             },
           })
 

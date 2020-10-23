@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Jacob Deane - geek, photographer, engineer`,
@@ -63,6 +67,14 @@ module.exports = {
         path: `${__dirname}/content/assets`,
         name: `assets`,
       },
+    },
+    {
+    resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ['Price'],
+        secretKey: process.env.STRIPE_SECRET_KEY,
+        downloadFiles: false,
+      }
     },
     {
       resolve: `gatsby-plugin-mdx`,
