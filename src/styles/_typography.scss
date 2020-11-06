@@ -31,13 +31,16 @@
     --padding: 1.25em;
     --padding-safe: calc( var(--padding) + env(safe-area-inset-left) );
 
+    /* border-radius */
+    --border-radius: .5em;
+
     /* max-width */
     --max-width-text: 45rem;
     --max-width-wide: 45rem;
 
     /* line-height */
     --heading-line-height: 1.2;
-    --body-line-height: 1.618; //golden ratio
+    --body-line-height: 1.5; //1.618 golden ratio
 }
 
 @include breakpoint(tablet) {
@@ -332,6 +335,8 @@ article {
 
 	        cite { color: #999; }
 	    }
+
+	    img {filter: brightness(75%);}
 	}
 
 	.button {

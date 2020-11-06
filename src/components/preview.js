@@ -7,13 +7,12 @@ import "./preview.scss"
 class Preview extends React.Component {
   render() {
   	
-  	const { slug, category, year, fluid, title, date, timeToRead, excerpt } = this.props
-
+  	const { id, slug, category, year, fluid, title, date, timeToRead, excerpt } = this.props
   	return (
-  		<article key={slug} className='post'>
-			<Link to={`/${category}/${year}${slug}`} >
+  		<article key={id} id={`post-${id}`} className='post' >
+			<Link to={`/${category}/${year}${slug}`} className='post__thumb' >
 				<Img
-				className='post__img'
+				className='post__thumb__img'
 				fluid={fluid}
 				alt={title}
 				title={title}
@@ -30,13 +29,10 @@ class Preview extends React.Component {
 				__html: excerpt,
 				}}
 				/>
-				<p>
-					<Link
-					className='post__link'
-					to={`/${category}/${year}${slug}`}
-					>Read More
-					</Link>
-				</p>
+				<Link className='post__link' to={`/${category}/${year}${slug}`} >
+					<button className='button' >Read More</button>
+				</Link>
+				
 			</div>
       </article>
   	)

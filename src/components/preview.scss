@@ -4,7 +4,10 @@ $content_width: 836px;
 	display: block;
 	text-align: left;
 	max-width: var(--max-width-wide);
-	margin: auto;
+	padding: 0;
+	margin: var(--padding);
+	position: relative;
+	@include border-radii(var(--border-radius), var(--border-radius), var(--border-radius), var(--border-radius));
 }
 
 .post::after {
@@ -13,19 +16,19 @@ $content_width: 836px;
   display: table;
 }
 
-.post__img {
-	margin-bottom: var(--space-md);
-	height: 0;
-	padding-bottom: 66.666666666%;
+.post__text {
+	padding: var(--padding);
+	font-family: var(--sans-serif);
 }
 
-.post__date, .post__link {
+.post__date {
 	font-size: .75rem;
 	font-family: var(--monospace);
     letter-spacing: 0.1em;
 	text-transform: uppercase;
 	margin-bottom: .5rem;
-	color: var(--color-text-subtle);
+	color: var(--color-text);
+	opacity: 0.75;
 }
 
 .post__title {
@@ -46,9 +49,9 @@ $content_width: 836px;
 
 .post__link {
 	text-decoration: none;
-	border-bottom: 1px solid #333;
-	padding-bottom: .125em;
+	width: 100%; 
 
+	& button { margin: 0; width: 100%;  }
 }
 
 .dark {
@@ -61,18 +64,54 @@ $content_width: 836px;
 	.post__link { border-bottom-color: #666; }
 }
 
+
+.post__thumb {
+	position:relative;
+	display: block;
+	height: 0;
+	padding-bottom: 66.666666666%;
+	opacity:.9;
+}
+
+.dark .post__thumb { filter: brightness(75%) }
+
+.post__thumb__img {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	@include border-radii(var(--border-radius), var(--border-radius), 0, 0);
+}
+
 @include breakpoint(tablet) {
-	.post__img {
-		width: calc(50% - .5 * var(--padding));
+
+	.post__thumb {
+		width: 50%;
 		float: left;
-		margin-right: var(--padding);
 		padding-bottom: 60%;
+		margin-right: var(--padding);
 	}
+
+	.post__thumb__img {
+		@include border-radii(var(--border-radius), 0, 0, var(--border-radius));
+	}
+	.post__link {
+		font-size: .75em;
+		position: absolute;
+		right: var(--padding);
+		bottom: var(--padding);
+		width: auto; 
+	}
+}
+
+@media (min-width: 48.5em) {
+	.post { margin: var(--padding) auto; }
 }
 
 @include breakpoint(laptop) {
 
-	.post__img {
+	.post__thumb {
 		padding-bottom: 33.333333333%;
 	}
 	.post__title > a {

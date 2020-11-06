@@ -40,7 +40,7 @@ export default function hexToHSL(H,S = null,L = null, A = null) {
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
 
-  //if we have an overrides, then override the calculated values.
+  //if we have any overrides, then override the calculated values.
   if(S) { s = S }
   if(L) { l = L }
 
