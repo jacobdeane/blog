@@ -220,6 +220,7 @@ article {
 	    text-transform: uppercase;
 	    letter-spacing: 0.05em;
 	    font-weight: 700;
+	    text-align: center;
 	}
 
 	sup, sub {
@@ -336,7 +337,10 @@ article {
 	        cite { color: #999; }
 	    }
 
-	    img {filter: brightness(75%);}
+	    img {
+	    	filter: brightness(75%);
+			box-shadow: none !important;
+		}
 	}
 
 	.button {
