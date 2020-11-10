@@ -12,6 +12,7 @@ import PinterestLogo from "../../static/pinterest.svg"
 import VimeoLogo from "../../static/vimeo.svg"
 
 import "./layout.scss"
+import "../styles/prismjs.scss"
 
 class Layout extends React.Component {
   render() {

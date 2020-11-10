@@ -53,6 +53,7 @@
 
 @include breakpoint(laptop) {
     :root {
+    	--max-width-text: 55rem;
    		--max-width-wide: 75rem;
    		--padding: 2em;
     }
