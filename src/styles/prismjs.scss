@@ -42,9 +42,10 @@ code[class*="language-"] ::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
-	padding: 1em;
-	margin: 0.5em auto;
+	padding: calc(0.5 * var(--padding));
+	margin: 0 auto var(--space-md) auto;
 	overflow: auto;
+	border-radius:.33333em;
 }
 
 :not(pre) > code[class*="language-"],

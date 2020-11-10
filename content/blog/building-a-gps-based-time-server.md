@@ -11,8 +11,6 @@ excerpt: Time is an illusion. Lunchtime doubly so. This is a rough guide of how
   to build a super accurate NTP time server on a raspberry pi using GPS as the
   primary time source.
 ---
-
-
 Accurate, synchronised time is a very useful thing for electronic devices to have. Nearly every modern electronic device that can connect to the internet will use NTP (Network Time Protocol) servers to synchronise their internal clocks; PCs, laptops, tablets, TVs, mobiles etc, will all use internet based NTP servers to adjust their clocks.
 
 For the most part, this is fine - all of your devices will likely have the correct time to the nearest second. Network delays (ping) can add a small margin of error to time you recieve, but its unlikely to cause an issue in the home environment. However, if like me you have [segregated your network](/technology/2019/home-networks-for-iot/) and blocked internet access to any of your IOT devices, these will not be able to synchronise their clocks and may drift significantly over time - especially after power cuts if they don't have battery on board to maintain a clock. My IP cameras clocks drifted by as much as 20 minutes, which is less than ideal and made it difficult to find time based events in the footage - it would also cause issues if the footage was ever needed as evidence as the timestamp would be completely wrong!
@@ -200,7 +198,7 @@ GPSD_OPTIONS="-n"
 
 #### Create the gpsd service
 
-We need to make sure that gpsd runs on boot. We can create the folling symlink to do this:
+We need to make sure that gpsd runs on boot. We can create the following symlink to do this:
 
 ```shell
 sudo ln -s /lib/systemd/system/gpsd.service /etc/systemd/system/multi-user.target.wants/
@@ -368,7 +366,7 @@ Finally we need to tell NTP that we have some better time sources to use.
 
 Even though GPS provides highly accurate time, it's a best practice to have multiple time sources and let ntpd sort it out: if the GPS antenna gets disloged or blocked or something, we want at least *some* semblance of accurate time rather than just freewheeling with no real time source.
 
-Edit */etc/ntp.conf* and you should see that there are a number of pools in there already - I have commented out all but the first two pools. Need to test what difference this makes...
+Edit */etc/ntp.conf* and you should see that there are a number of pools in there already - I have commented out all but the first two pools. Ideally I need to find some UK based stratum-1 servers to add here instead - network time lag is key here, I don't want to be grabing time from half way around the world!
 
 ```shell
 # pool.ntp.org maps to about 1000 low-stratum NTP servers.  Your server will
@@ -380,16 +378,16 @@ pool 1.debian.pool.ntp.org iburst
 # pool 3.debian.pool.ntp.org iburst
 ```
 
-At the end of this file we will add our GPS and PPS using pseudo addresses which refer to our shared memory addresses - any other method of getting these timing is not fast enough. Microseconds count here, so we will read the time directly out of memory! Add the following lines to the end of */etc/ntp.conf*:
+At the end of this file we will add our GPS and PPS using pseudo addresses which refer to shared memory addresses - any other method of getting these timing is not fast enough. Microseconds count here, so we will read the time directly out of memory! I'm using [Johannes Weber's](https://weberblog.net/ntp-server-via-gps-on-a-raspberry-pi/) settings, which seem to work well. Add the following lines to the end of */etc/ntp.conf*:
 
 ```shell
-# GPS PPS reference
-server 127.127.28.2 prefer
-fudge  127.127.28.2 refid PPS
-
-# get time from SHM from gpsd
-server 127.127.28.0
-fudge  127.127.28.0 refid GPS
+# pps-gpio /dev/pps0
+server 127.127.22.0 minpoll 4 maxpoll 4
+fudge 127.127.22.0 refid PPS
+ 
+# gpsd clock via shm
+server 127.127.28.0 minpoll 4 maxpoll 4 prefer
+fudge 127.127.28.0 time1 +0.130 refid GPS flag1 1
 ```
 
 Finally lets restart NTP and check if it all works:
@@ -406,10 +404,19 @@ When you first start it may take some time for the GPS to get a fix, but once it
 ==============================================================================
  0.debian.pool.n .POOL.          16 p    -   64    0    0.000   +0.000   0.001
  1.debian.pool.n .POOL.          16 p    -   64    0    0.000   +0.000   0.001
-*SHM(2)          .PPS.            0 l   17   64  377    0.000   -0.002   0.001
-xSHM(0)          .GPS.            0 l   16   64  377    0.000  -113.64   1.081
+oPPS(0)          .PPS.            0 l    8   16  377    0.000   +0.037   0.003
+*SHM(0)          .GPS.            0 l    7   16  377    0.000  +13.835   0.637
+-time.rdg.uk.as4 67.92.135.130    3 u   27   64   77   31.574   -7.645   1.265
++ns1.do.steersne 157.44.176.4     2 u   27   64   77   31.283   -7.389   1.659
+-x.ns.gin.ntt.ne 249.224.99.213   2 u   24   64   77   36.340   -8.447   1.979
+-195.219.205.9   195.219.14.21    2 u   29   64   77   34.430   -6.360   1.983
++85.199.214.101  .GPS.            1 u   24   64   77   39.596  -10.702   3.007
+-ferrars.curadig 131.188.3.223    2 u   21   64   77   35.906   -7.929   3.018
+-ns4.turbodns.co 90.187.99.165    2 u   22   64   77   37.696   -8.412   3.140
 ```
 
-Note the **\*** and the **x** at the start of these lines. the **x** indicates that this has been discarded by the algorithm and the **\*** indicates the system peer (ie the one that NTPD is using. In my case NTPD is using PPS and has discarded GPS - exactly what we expect to see!
+Note the **o** symbol (= PPS peer when the prefer peer is valid) before the PPS, as well as the **\*** symbol (= system peer) before the SHM; refer to [Peer Status Word](http://doc.ntp.org/current-stable/decode.html#peer). These symbols must be present. Otherwise your instance is not working correctly, which would show an **x** instead.
+
+The IP address below are the peers that NTPD has chosen from the two pools we left in the configuration, these will act as backup time sources if our GPS fails for some reason.
 
 Congratulations, if you got this far you have a working NTP server that should be highly precise!
