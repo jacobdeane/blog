@@ -36,7 +36,7 @@ Before we get too stuck in, lets do a few basic things before we get too far.
 
 #### Find your Pi on the network
 
-Firstly a tip for finding devices on your network. You can use the following command on a UNIX based machine to scan your subnet for attached devices - this makes it super easy to find the IP address assigned to the new device - for the NTP server we would ideally set up a DHCP reservation and probably a local domain name for it, but that falls outside the scope of this blog post!
+Firstly a tip for finding devices on your network. You can use the following command on a UNIX based machine to scan your subnet for attached devices - this makes it super easy to find the IP address assigned to the new device - ideally we should set up a DHCP reservation, and depenging on the use case for your Pi, a local domain name for it, but that falls outside the scope of this blog post!
 
 ```shell
 sudo nmap -sP 192.168.0.0/24
@@ -124,6 +124,7 @@ sudo deluser pi
 Raspberry Pi OS comes with a configuration tool where we can set a few of the defaults up and ensure the Pi is optimised for our use.
 
 Run raspi-config using the following command:
+
 ```shell
 sudo raspi-config
 ```
