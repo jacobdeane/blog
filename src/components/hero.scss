@@ -42,7 +42,14 @@
 .hero__row {
 	display: table-cell;
 	vertical-align: bottom;
+	height: auto;
 } 
+
+.hero__bg {
+	background: rgba( 255, 255, 255, 0.25 );
+    backdrop-filter: blur( 20px );
+	-webkit-backdrop-filter: blur( 20px );
+}
 
 .hero__text {
 	color: black;
@@ -95,6 +102,9 @@
 
 //dark theme
 .dark {
+	.hero__bg {
+		background: rgba( 0, 0, 0, 0.25 );
+	}
 	.hero__text {
 		color: white;
 	}
@@ -104,6 +114,18 @@
 	}
 	.hero__date {
 		color: var(--color-dark-text-subtle);
+	}
+}
+
+//firefox fixes (until it supports backdrop-filter)
+@-moz-document url-prefix() { 
+	.hero__bg {
+		background: rgba( 255, 255, 255, 0.5 );
+	}
+	.dark {
+		.hero__bg {
+			background: rgba( 0, 0, 0, 0.5 );
+		}
 	}
 }
 
